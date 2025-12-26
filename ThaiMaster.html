@@ -1,0 +1,4728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Thai Ultimate 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #ff6b6b;
+            --success: #38ef7d;
+            --bg-light: #f8f9fa;
+            --text-dark: #343a40;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 90vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        nav {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn:active { transform: translateY(0); }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn-success { background: linear-gradient(45deg, #11998e, #38ef7d); color: white; }
+        .btn-accent { background: var(--accent); color: white; }
+
+        .font-toggle {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .font-toggle:hover { background: #f0f0f0; }
+
+        main { padding: 2rem; flex: 1; }
+        
+        .section { display: none; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .lesson-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--primary);
+        }
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--primary);
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .vocab-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .thai-lg { font-size: 1.6rem; color: var(--secondary); font-weight: bold; }
+        .phonetic { color: var(--primary); font-style: italic; font-size: 0.95rem; }
+        .modern-font { font-family: 'Sukhumvit Set', sans-serif; font-size: 1.4rem; color: var(--secondary); font-weight: 500; }
+        
+        /* --- FLASHCARD CSS - SOLID BLOCK APPROACH --- */
+        .fc-container {
+            perspective: none; /* Disable 3D perspective */
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            background: #f0f2f5; /* Match modal background */
+            border-radius: 20px;
+            overflow: hidden; /* Prevent any bleed */
+        }
+
+        .fc-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            /* No 3D transforms - use opacity for flip effect */
+            transition: none;
+        }
+
+        .fc-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            /* Solid backgrounds with no transparency */
+            background-clip: padding-box;
+            -webkit-background-clip: padding-box;
+            /* Smooth transition for flip effect */
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            /* Force hardware acceleration */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .fc-front {
+            background: white !important;
+            color: var(--text-dark);
+            border: 2px solid #e9ecef;
+            opacity: 1 !important;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .fc-back {
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+            color: white;
+            border: 2px solid var(--primary);
+            opacity: 0 !important; /* Hidden by default */
+            visibility: hidden;
+            z-index: 1;
+        }
+
+        .fc-card.is-flipped .fc-front {
+            opacity: 0 !important;
+            visibility: hidden;
+        }
+
+        .fc-card.is-flipped .fc-back {
+            opacity: 1 !important;
+            visibility: visible;
+        }
+
+        .fc-text-main { font-size: 2.5rem; margin-bottom: 10px; font-weight: bold; }
+        .fc-text-sub { font-size: 1.2rem; opacity: 0.9; }
+        .fc-hint { position: absolute; bottom: 15px; font-size: 0.8rem; opacity: 0.5; }
+
+        .fc-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .mode-select {
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute; top: 15px; right: 20px;
+            font-size: 2rem; cursor: pointer; color: #aaa;
+        }
+        .close-modal:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .fc-text-main { font-size: 2rem; }
+            header { padding: 1.5rem; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🇹🇭 Learn Thai Ultimate</h1>
+        <p>Expanded Vocabulary 2025</p>
+    </header>
+
+    <nav>
+        <button class="btn btn-primary" onclick="app.showSection('home')">🏠 Home</button>
+        <button class="btn btn-primary" onclick="app.showSection('lessons')">📚 Topics</button>
+        <button class="btn btn-primary" onclick="app.showSection('search')">🔍 Search</button>
+        <button class="btn btn-primary" onclick="app.showSection('practice')">🎯 Practice</button>
+        <button class="btn btn-primary" onclick="app.showSection('settings')">⚙️ Settings</button>
+    </nav>
+
+    <main>
+        <section id="home" class="section active">
+            <div style="text-align: center; padding: 2rem;">
+                <h2 style="color: var(--secondary); margin-bottom: 1rem;">sa-wat-dii Krub/Ka! 🙏</h2>
+                <p style="font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+                    Welcome to the updated Thai learning platform. This version includes extended vocabulary from the 2025 curriculum, 
+                    covering <strong>Classifiers</strong>, <strong>Cooking terms</strong>, <strong>Complex numbers</strong>, and more.
+                    Use the <strong>Search</strong> feature to find specific words, or try the <strong>Practice</strong> modes for mixed flashcards and quizzes.
+                </p>
+                <br>
+                <button class="btn btn-success" style="font-size: 1.2rem; padding: 15px 40px;" onclick="app.showSection('lessons')">
+                    Start Learning
+                </button>
+            </div>
+        </section>
+
+        <section id="lessons" class="section">
+            <h2 style="margin-bottom: 20px; color: var(--secondary);">Choose a Topic</h2>
+            <div id="lesson-grid" class="lesson-grid"></div>
+        </section>
+
+        <section id="search" class="section">
+            <h2 style="color: var(--secondary); margin-bottom: 20px;">Search Vocabulary</h2>
+            <div style="margin-bottom: 20px;">
+                <input type="text" id="search-input" placeholder="Search Thai words, phonetic spelling, or English..." 
+                       style="width: 100%; padding: 12px; border: 2px solid #e9ecef; border-radius: 25px; font-size: 1rem; margin-bottom: 10px;">
+                <button class="btn btn-primary" onclick="app.performSearch()" style="width: 100%;">🔍 Search</button>
+            </div>
+            <div id="search-results" class="vocab-grid"></div>
+        </section>
+
+        <section id="practice" class="section">
+            <h2 style="color: var(--secondary); margin-bottom: 20px;">Practice Modes</h2>
+            <p style="margin-bottom: 20px; color: #666;">Choose a practice mode to test your knowledge across all topics:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                <div class="lesson-card" onclick="app.startPractice('flashcards')" style="cursor: pointer;">
+                    <h3 style="color: var(--secondary);">🎴 Mixed Flashcards</h3>
+                    <p style="color: #666;">Practice with flashcards from all lessons</p>
+                    <div style="font-size: 0.85rem; color: #888;">Random words from all categories</div>
+                </div>
+                
+                <div class="lesson-card" onclick="app.startPractice('quiz')" style="cursor: pointer;">
+                    <h3 style="color: var(--secondary);">📝 Mixed Quiz</h3>
+                    <p style="color: #666;">Take a quiz with words from all lessons</p>
+                    <div style="font-size: 0.85rem; color: #888;">Multiple choice questions</div>
+                </div>
+                
+                <div class="lesson-card" onclick="app.startPractice('tones')" style="cursor: pointer;">
+                    <h3 style="color: var(--secondary);">🎵 Tone Practice</h3>
+                    <p style="color: #666;">Practice Thai tones with audio</p>
+                    <div style="font-size: 0.85rem; color: #888;">Listen and identify tones</div>
+                </div>
+            </div>
+            
+            <div id="practice-container" style="display: none;">
+                <!-- Practice content will be inserted here -->
+            </div>
+        </section>
+
+        <section id="lesson-detail" class="section">
+            <button class="btn btn-secondary" onclick="app.showSection('lessons')" style="margin-bottom: 20px;">← Back</button>
+            <div id="lesson-header"></div>
+            
+            <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+                <button class="btn btn-accent" onclick="quiz.start()">📝 Take Quiz</button>
+                <button class="btn btn-success" onclick="flashcards.open()">🎴 Flashcards</button>
+            </div>
+
+            <div id="vocab-container" class="vocab-grid"></div>
+        </section>
+
+        <section id="settings" class="section">
+            <h2>Settings</h2>
+            <div style="margin-top: 20px;">
+                <label>Font Mode:</label>
+                <select id="font-mode-select" onchange="app.setFontMode(this.value)" style="width: 100%; padding: 10px; margin-top: 5px;">
+                    <option value="traditional">Traditional Thai</option>
+                    <option value="modern">Modern Thai</option>
+                    <option value="both">Show Both</option>
+                </select>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Choose how Thai text is displayed throughout the app.</p>
+            </div>
+            <div style="margin-top: 20px;">
+                <label>Voice Selection:</label>
+                <select id="voice-select" style="width: 100%; padding: 10px; margin-top: 5px;"></select>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Note: Thai voices depend on your device/browser.</p>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="fc-modal" class="modal">
+    <div class="modal-content" style="background: #f0f2f5;">
+        <span class="close-modal" onclick="flashcards.close()">&times;</span>
+        <h3 style="text-align: center; color: var(--secondary); margin-bottom: 10px;">Flashcards</h3>
+        
+        <select id="fc-mode" class="mode-select" onchange="flashcards.setMode(this.value)">
+            <option value="standard">Standard: Thai → English</option>
+            <option value="recall">Recall: English → Thai</option>
+            <option value="hard">Hard Mode: Thai Script Only → English</option>
+        </select>
+        <button class="font-toggle" onclick="flashcards.toggleCardFont()">🔄 Font</button>
+
+        <div class="fc-container" onclick="flashcards.flip()">
+            <div class="fc-card" id="fc-card">
+                <div class="fc-front">
+                    <div class="fc-text-main" id="fc-front-main">...</div>
+                    <div class="fc-text-sub" id="fc-front-sub"></div>
+                    <div class="fc-hint">Tap to flip</div>
+                </div>
+                <div class="fc-back">
+                    <div class="fc-text-main" id="fc-back-main">...</div>
+                    <div class="fc-text-sub" id="fc-back-sub"></div>
+                    <button class="btn btn-secondary" style="margin-top:15px; background: rgba(255,255,255,0.2);" onclick="event.stopPropagation(); tts.speak(flashcards.currentWord.thai)">🔊 Play Audio</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="fc-controls">
+            <button class="btn btn-secondary" onclick="flashcards.prev()">← Previous</button>
+            <span id="fc-counter" style="display:flex; align-items:center; font-weight:bold; color:#666;">1 / 10</span>
+            <button class="btn btn-primary" onclick="flashcards.next()">Next →</button>
+        </div>
+    </div>
+</div>
+
+<div id="quiz-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('quiz-modal').classList.remove('active')">&times;</span>
+        <div id="quiz-body"></div>
+    </div>
+</div>
+
+<script>
+// --- DATA: Full Vocabulary List ---
+const lessonsData = [
+    {
+        id: 1,
+        title: "Greetings",
+        desc: "Vocabulary related to greetings",
+        words: [
+            {
+                thai: "สวัสดี",
+                phonetic: "sà-wàt-dii",
+                english: "Hello/Goodbye",
+                modern: "สวัสดี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขอบคุณ",
+                phonetic: "khɔ̀ɔp-khun",
+                english: "Thank you",
+                modern: "ขอบคุณ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไม่เป็นไร",
+                phonetic: "mâi-bpen-rai",
+                english: "No problem/You're welcome",
+                modern: "ไม่เป็นไร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขอโทษ",
+                phonetic: "khɔ̌ɔ-thôot",
+                english: "Sorry/Excuse me",
+                modern: "ขอโทษ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยินดีที่ได้รู้จัก",
+                phonetic: "yin-dii thîi dâay rúu-jàk",
+                english: "Nice to meet you",
+                modern: "ยินดีที่ได้รู้จัก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ครับ",
+                phonetic: "khráp",
+                english: "Polite particle (male)",
+                modern: "ครับ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ค่ะ",
+                phonetic: "khà",
+                english: "Polite particle (female)",
+                modern: "ค่ะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คะ",
+                phonetic: "khá",
+                english: "Polite particle (female question)",
+                modern: "คะ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 2,
+        title: "Pronouns",
+        desc: "Vocabulary related to pronouns",
+        words: [
+            {
+                thai: "ผม",
+                phonetic: "phǒm",
+                english: "I (male speaker)",
+                modern: "ผม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฉัน",
+                phonetic: "chǎn",
+                english: "I (female/neutral)",
+                modern: "ฉัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คุณ",
+                phonetic: "khun",
+                english: "You",
+                modern: "คุณ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เขา",
+                phonetic: "khǎo",
+                english: "He/She/They",
+                modern: "เขา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เรา",
+                phonetic: "rao",
+                english: "We/Us",
+                modern: "เรา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พวกเรา",
+                phonetic: "phûak-rao",
+                english: "We (plural)",
+                modern: "พวกเรา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มัน",
+                phonetic: "man",
+                english: "It",
+                modern: "มัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เธอ",
+                phonetic: "thəə",
+                english: "She/You (informal)",
+                modern: "เธอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พี่",
+                phonetic: "phîi",
+                english: "You/I (to older person)",
+                modern: "พี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้อง",
+                phonetic: "nɔ́ɔng",
+                english: "You/I (to younger person)",
+                modern: "น้อง",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 3,
+        title: "Family & Relationships",
+        desc: "Vocabulary related to family & relationships",
+        words: [
+            {
+                thai: "ครอบครัว",
+                phonetic: "khrɔ̂ɔp-khrua",
+                english: "Family",
+                modern: "ครอบครัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พ่อ",
+                phonetic: "phɔ̂ɔ",
+                english: "Father",
+                modern: "พ่อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แม่",
+                phonetic: "mâae",
+                english: "Mother",
+                modern: "แม่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พี่ชาย",
+                phonetic: "phîi-chaai",
+                english: "Older Brother",
+                modern: "พี่ชาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พี่สาว",
+                phonetic: "phîi-sǎao",
+                english: "Older Sister",
+                modern: "พี่สาว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้องชาย",
+                phonetic: "nɔ́ɔng-chaai",
+                english: "Younger Brother",
+                modern: "น้องชาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้องสาว",
+                phonetic: "nɔ́ɔng-sǎao",
+                english: "Younger Sister",
+                modern: "น้องสาว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปู่",
+                phonetic: "bpùu",
+                english: "Grandfather (Father's side)",
+                modern: "ปู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ย่า",
+                phonetic: "yâa",
+                english: "Grandmother (Father's side)",
+                modern: "ย่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตา",
+                phonetic: "dtaa",
+                english: "Grandfather (Mother's side)",
+                modern: "ตา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยาย",
+                phonetic: "yaai",
+                english: "Grandmother (Mother's side)",
+                modern: "ยาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลุง",
+                phonetic: "lung",
+                english: "Uncle (Older brother of parent)",
+                modern: "ลุง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ป้า",
+                phonetic: "bpâa",
+                english: "Aunt (Older sister of parent)",
+                modern: "ป้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้า",
+                phonetic: "náa",
+                english: "Uncle/Aunt (Younger sibling of Mother)",
+                modern: "น้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อา",
+                phonetic: "aa",
+                english: "Uncle/Aunt (Younger sibling of Father)",
+                modern: "อา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลูกชาย",
+                phonetic: "lûuk-chaai",
+                english: "Son",
+                modern: "ลูกชาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลูกสาว",
+                phonetic: "lûuk-sǎao",
+                english: "Daughter",
+                modern: "ลูกสาว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สามี",
+                phonetic: "sǎa-mii",
+                english: "Husband",
+                modern: "สามี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ภรรยา",
+                phonetic: "phan-rá-yaa",
+                english: "Wife",
+                modern: "ภรรยา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แฟน",
+                phonetic: "faen",
+                english: "Boyfriend/Girlfriend/Partner",
+                modern: "แฟน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เพื่อน",
+                phonetic: "phûean",
+                english: "Friend",
+                modern: "เพื่อน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เพื่อนสนิท",
+                phonetic: "phûean-sà-nìt",
+                english: "Close Friend",
+                modern: "เพื่อนสนิท",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เพื่อนร่วมงาน",
+                phonetic: "phûean-rûam-ngaan",
+                english: "Colleague",
+                modern: "เพื่อนร่วมงาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เจ้านาย",
+                phonetic: "jâo-naai",
+                english: "Boss",
+                modern: "เจ้านาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลูกพี่ลูกน้อง",
+                phonetic: "lûuk-phîi-lûuk-nɔ́ɔng",
+                english: "Cousin",
+                modern: "ลูกพี่ลูกน้อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พ่อตา",
+                phonetic: "phɔ̂ɔ-dtaa",
+                english: "Father-in-law (Husband's side)",
+                modern: "พ่อตา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แม่ยาย",
+                phonetic: "mâae-yaai",
+                english: "Mother-in-law (Husband's side)",
+                modern: "แม่ยาย",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 4,
+        title: "Verbs",
+        desc: "Vocabulary related to verbs",
+        words: [
+            {
+                thai: "ไป",
+                phonetic: "bpai",
+                english: "to go",
+                modern: "ไป",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กิน",
+                phonetic: "gin",
+                english: "to eat",
+                modern: "กิน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดื่ม",
+                phonetic: "dùuem",
+                english: "to drink",
+                modern: "ดื่ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อยาก",
+                phonetic: "yàak",
+                english: "to want",
+                modern: "อยาก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชอบ",
+                phonetic: "chɔ̂ɔp",
+                english: "to like",
+                modern: "ชอบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มี",
+                phonetic: "mii",
+                english: "to have",
+                modern: "มี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เป็น",
+                phonetic: "bpen",
+                english: "to be (status/identity)",
+                modern: "เป็น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อยู่",
+                phonetic: "yùu",
+                english: "to stay/live/be located",
+                modern: "อยู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คือ",
+                phonetic: "khuue",
+                english: "to be (equals)",
+                modern: "คือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มา",
+                phonetic: "maa",
+                english: "to come",
+                modern: "มา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทำ",
+                phonetic: "tham",
+                english: "to do/make",
+                modern: "ทำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พูด",
+                phonetic: "phûut",
+                english: "to speak",
+                modern: "พูด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฟัง",
+                phonetic: "fang",
+                english: "to listen",
+                modern: "ฟัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดู",
+                phonetic: "duu",
+                english: "to look/watch",
+                modern: "ดู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เห็น",
+                phonetic: "hěn",
+                english: "to see",
+                modern: "เห็น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เรียน",
+                phonetic: "riian",
+                english: "to study",
+                modern: "เรียน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทำงาน",
+                phonetic: "tham-ngaan",
+                english: "to work",
+                modern: "ทำงาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นอน",
+                phonetic: "nɔɔn",
+                english: "to sleep",
+                modern: "นอน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตื่น",
+                phonetic: "dtùuen",
+                english: "to wake up",
+                modern: "ตื่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เดิน",
+                phonetic: "doen",
+                english: "to walk",
+                modern: "เดิน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วิ่ง",
+                phonetic: "wîng",
+                english: "to run",
+                modern: "วิ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขับ",
+                phonetic: "khàp",
+                english: "to drive",
+                modern: "ขับ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นั่ง",
+                phonetic: "nâng",
+                english: "to sit",
+                modern: "นั่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยืน",
+                phonetic: "yuuen",
+                english: "to stand",
+                modern: "ยืน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รอ",
+                phonetic: "rɔɔ",
+                english: "to wait",
+                modern: "รอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ช่วย",
+                phonetic: "chûay",
+                english: "to help",
+                modern: "ช่วย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เปิด",
+                phonetic: "bpə̀ət",
+                english: "to open/turn on",
+                modern: "เปิด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปิด",
+                phonetic: "bpìt",
+                english: "to close/turn off",
+                modern: "ปิด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รัก",
+                phonetic: "rák",
+                english: "to love",
+                modern: "รัก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เกลียด",
+                phonetic: "glìat",
+                english: "to hate",
+                modern: "เกลียด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กลัว",
+                phonetic: "glua",
+                english: "to fear",
+                modern: "กลัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลืม",
+                phonetic: "luuem",
+                english: "to forget",
+                modern: "ลืม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จำ",
+                phonetic: "jam",
+                english: "to remember",
+                modern: "จำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คิด",
+                phonetic: "khít",
+                english: "to think",
+                modern: "คิด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รู้",
+                phonetic: "rúu",
+                english: "to know (fact)",
+                modern: "รู้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รู้จัก",
+                phonetic: "rúu-jàk",
+                english: "to know (person/place)",
+                modern: "รู้จัก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เข้าใจ",
+                phonetic: "khâo-jai",
+                english: "to understand",
+                modern: "เข้าใจ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 5,
+        title: "Numbers",
+        desc: "Vocabulary related to numbers",
+        words: [
+            {
+                thai: "ศูนย์",
+                phonetic: "sǔun",
+                english: "zero",
+                modern: "ศูนย์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่ง",
+                phonetic: "nùeng",
+                english: "one",
+                modern: "หนึ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สอง",
+                phonetic: "sɔ̌ɔng",
+                english: "two",
+                modern: "สอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สาม",
+                phonetic: "sǎam",
+                english: "three",
+                modern: "สาม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สี่",
+                phonetic: "sìi",
+                english: "four",
+                modern: "สี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้า",
+                phonetic: "hâa",
+                english: "five",
+                modern: "ห้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หก",
+                phonetic: "hòk",
+                english: "six",
+                modern: "หก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เจ็ด",
+                phonetic: "jèt",
+                english: "seven",
+                modern: "เจ็ด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แปด",
+                phonetic: "bpàet",
+                english: "eight",
+                modern: "แปด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เก้า",
+                phonetic: "gâao",
+                english: "nine",
+                modern: "เก้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบ",
+                phonetic: "sìp",
+                english: "ten",
+                modern: "สิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบเอ็ด",
+                phonetic: "sìp-èt",
+                english: "eleven",
+                modern: "สิบเอ็ด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบสอง",
+                phonetic: "sìp-sɔ̌ɔng",
+                english: "twelve",
+                modern: "สิบสอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบสาม",
+                phonetic: "sìp-sǎam",
+                english: "thirteen",
+                modern: "สิบสาม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบสี่",
+                phonetic: "sìp-sìi",
+                english: "fourteen",
+                modern: "สิบสี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบห้า",
+                phonetic: "sìp-hâa",
+                english: "fifteen",
+                modern: "สิบห้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบหก",
+                phonetic: "sìp-hòk",
+                english: "sixteen",
+                modern: "สิบหก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบเจ็ด",
+                phonetic: "sìp-jèt",
+                english: "seventeen",
+                modern: "สิบเจ็ด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบแปด",
+                phonetic: "sìp-bpàet",
+                english: "eighteen",
+                modern: "สิบแปด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิบเก้า",
+                phonetic: "sìp-gâao",
+                english: "nineteen",
+                modern: "สิบเก้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยี่สิบ",
+                phonetic: "yîi-sìp",
+                english: "twenty",
+                modern: "ยี่สิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยี่สิบเอ็ด",
+                phonetic: "yîi-sìp-èt",
+                english: "twenty-one",
+                modern: "ยี่สิบเอ็ด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยี่สิบสอง",
+                phonetic: "yîi-sìp-sɔ̌ɔng",
+                english: "twenty-two",
+                modern: "ยี่สิบสอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สามสิบ",
+                phonetic: "sǎam-sìp",
+                english: "thirty",
+                modern: "สามสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สี่สิบ",
+                phonetic: "sìi-sìp",
+                english: "forty",
+                modern: "สี่สิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้าสิบ",
+                phonetic: "hâa-sìp",
+                english: "fifty",
+                modern: "ห้าสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หกสิบ",
+                phonetic: "hòk-sìp",
+                english: "sixty",
+                modern: "หกสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เจ็ดสิบ",
+                phonetic: "jèt-sìp",
+                english: "seventy",
+                modern: "เจ็ดสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แปดสิบ",
+                phonetic: "bpàet-sìp",
+                english: "eighty",
+                modern: "แปดสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เก้าสิบ",
+                phonetic: "gâao-sìp",
+                english: "ninety",
+                modern: "เก้าสิบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งร้อย",
+                phonetic: "nùeng-rɔ́ɔy",
+                english: "one hundred",
+                modern: "หนึ่งร้อย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สองร้อย",
+                phonetic: "sɔ̌ɔng-rɔ́ɔy",
+                english: "two hundred",
+                modern: "สองร้อย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งพัน",
+                phonetic: "nùeng-phan",
+                english: "one thousand",
+                modern: "หนึ่งพัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งหมื่น",
+                phonetic: "nùeng-mùuen",
+                english: "ten thousand",
+                modern: "หนึ่งหมื่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งแสน",
+                phonetic: "nùeng-sǎen",
+                english: "one hundred thousand",
+                modern: "หนึ่งแสน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งล้าน",
+                phonetic: "nùeng-láan",
+                english: "one million",
+                modern: "หนึ่งล้าน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บาท",
+                phonetic: "bàat",
+                english: "baht (currency)",
+                modern: "บาท",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 6,
+        title: "Places",
+        desc: "Vocabulary related to places",
+        words: [
+            {
+                thai: "โรงพยาบาล",
+                phonetic: "roong-phá-yaa-baan",
+                english: "hospital",
+                modern: "โรงพยาบาล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สถานีตำรวจ",
+                phonetic: "sà-thǎa-nii-dtam-rùat",
+                english: "police station",
+                modern: "สถานีตำรวจ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ร้านขายยา",
+                phonetic: "ráan-khǎai-yaa",
+                english: "pharmacy",
+                modern: "ร้านขายยา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สถานีรถไฟ",
+                phonetic: "sà-thǎa-nii-rót-fai",
+                english: "train station",
+                modern: "สถานีรถไฟ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สถานีขนส่ง",
+                phonetic: "sà-thǎa-nii-khǒn-sòng",
+                english: "bus station",
+                modern: "สถานีขนส่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สนามบิน",
+                phonetic: "sà-nǎam-bin",
+                english: "airport",
+                modern: "สนามบิน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ท่าเรือ",
+                phonetic: "thâa-ruea",
+                english: "pier/port",
+                modern: "ท่าเรือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตลาด",
+                phonetic: "dtà-làat",
+                english: "market",
+                modern: "ตลาด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ธนาคาร",
+                phonetic: "thá-naa-khaan",
+                english: "bank",
+                modern: "ธนาคาร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไปรษณีย์",
+                phonetic: "bprai-sà-nii",
+                english: "post office",
+                modern: "ไปรษณีย์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้างสรรพสินค้า",
+                phonetic: "hâang-sàp-phá-sǐn-kháa",
+                english: "shopping mall",
+                modern: "ห้างสรรพสินค้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ร้านอาหาร",
+                phonetic: "ráan-aa-hǎan",
+                english: "restaurant",
+                modern: "ร้านอาหาร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โรงแรม",
+                phonetic: "roong-raem",
+                english: "hotel",
+                modern: "โรงแรม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บ้าน",
+                phonetic: "bâan",
+                english: "home/house",
+                modern: "บ้าน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โรงเรียน",
+                phonetic: "roong-riian",
+                english: "school",
+                modern: "โรงเรียน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มหาวิทยาลัย",
+                phonetic: "má-hǎa-wít-thá-yaa-lai",
+                english: "university",
+                modern: "มหาวิทยาลัย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วัด",
+                phonetic: "wát",
+                english: "temple",
+                modern: "วัด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สถานทูต",
+                phonetic: "sà-thǎan-thûut",
+                english: "embassy",
+                modern: "สถานทูต",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สำนักงานตรวจคนเข้าเมือง",
+                phonetic: "sǎm-nák-ngaan-dtrùat-khon-khâo-mueang",
+                english: "immigration office",
+                modern: "สำนักงานตรวจคนเข้าเมือง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตม.",
+                phonetic: "dtɔɔ-mɔɔ",
+                english: "immigration (abbrev)",
+                modern: "ตม.",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ร้านกาแฟ",
+                phonetic: "ráan-gaa-fae",
+                english: "coffee shop",
+                modern: "ร้านกาแฟ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ร้านสะดวกซื้อ",
+                phonetic: "ráan-sà-dùak-súe",
+                english: "convenience store",
+                modern: "ร้านสะดวกซื้อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เซเว่น",
+                phonetic: "say-wên",
+                english: "7-Eleven",
+                modern: "เซเว่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สวนสาธารณะ",
+                phonetic: "sǔan-sǎa-thaa-rá-ná",
+                english: "public park",
+                modern: "สวนสาธารณะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โรงหนัง",
+                phonetic: "roong-nǎng",
+                english: "movie theater",
+                modern: "โรงหนัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ออฟฟิศ",
+                phonetic: "ɔ́p-fít",
+                english: "office",
+                modern: "ออฟฟิศ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ที่ทำงาน",
+                phonetic: "thîi-tham-ngaan",
+                english: "workplace",
+                modern: "ที่ทำงาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปั๊มน้ำมัน",
+                phonetic: "bpám-náam-man",
+                english: "gas station",
+                modern: "ปั๊มน้ำมัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้องน้ำ",
+                phonetic: "hɔ̂ɔng-náam",
+                english: "restroom/toilet",
+                modern: "ห้องน้ำ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 7,
+        title: "Directions",
+        desc: "Vocabulary related to directions",
+        words: [
+            {
+                thai: "ตรง",
+                phonetic: "dtrong",
+                english: "straight",
+                modern: "ตรง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หลัง",
+                phonetic: "lǎng",
+                english: "behind",
+                modern: "หลัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หน้า",
+                phonetic: "nâa",
+                english: "in front of",
+                modern: "หน้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ใกล้",
+                phonetic: "glâi",
+                english: "near to/close to",
+                modern: "ใกล้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ข้างๆ",
+                phonetic: "khâang-khâang",
+                english: "next to/beside",
+                modern: "ข้างๆ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตรงข้าม",
+                phonetic: "dtrong-khâam",
+                english: "opposite/across from",
+                modern: "ตรงข้าม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ระหว่าง",
+                phonetic: "rá-wàang",
+                english: "between",
+                modern: "ระหว่าง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไกล",
+                phonetic: "glai",
+                english: "far from",
+                modern: "ไกล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทิศเหนือ",
+                phonetic: "thít-nǔea",
+                english: "North",
+                modern: "ทิศเหนือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทิศใต้",
+                phonetic: "thít-dtâi",
+                english: "South",
+                modern: "ทิศใต้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทิศตะวันออก",
+                phonetic: "thít-dtà-wan-ɔ̀ɔk",
+                english: "East",
+                modern: "ทิศตะวันออก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทิศตะวันตก",
+                phonetic: "thít-dtà-wan-dtòk",
+                english: "West",
+                modern: "ทิศตะวันตก",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 8,
+        title: "Food & Ingredients",
+        desc: "Vocabulary related to food & ingredients",
+        words: [
+            {
+                thai: "ข้าว",
+                phonetic: "khâao",
+                english: "rice",
+                modern: "ข้าว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กับข้าว",
+                phonetic: "gàp-khâao",
+                english: "food (with rice)",
+                modern: "กับข้าว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อาหาร",
+                phonetic: "aa-hǎan",
+                english: "food",
+                modern: "อาหาร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แกง",
+                phonetic: "gaeng",
+                english: "curry",
+                modern: "แกง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ผัก",
+                phonetic: "phàk",
+                english: "vegetables",
+                modern: "ผัก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำมัน",
+                phonetic: "náam-man",
+                english: "oil",
+                modern: "น้ำมัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เกลือ",
+                phonetic: "gluea",
+                english: "salt",
+                modern: "เกลือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำตาล",
+                phonetic: "náam-dtaan",
+                english: "sugar",
+                modern: "น้ำตาล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พริก",
+                phonetic: "phrík",
+                english: "chili/spicy",
+                modern: "พริก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กระเทียม",
+                phonetic: "grà-thiam",
+                english: "garlic",
+                modern: "กระเทียม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หอม",
+                phonetic: "hɔ̌ɔm",
+                english: "onion/shallot",
+                modern: "หอม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขิง",
+                phonetic: "khǐng",
+                english: "ginger",
+                modern: "ขิง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มะนาว",
+                phonetic: "má-naao",
+                english: "lime",
+                modern: "มะนาว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มะเขือเทศ",
+                phonetic: "má-khǔea-thêet",
+                english: "tomato",
+                modern: "มะเขือเทศ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไข่",
+                phonetic: "khài",
+                english: "egg",
+                modern: "ไข่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นม",
+                phonetic: "nom",
+                english: "milk",
+                modern: "นม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เนย",
+                phonetic: "noei",
+                english: "butter",
+                modern: "เนย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขนมปัง",
+                phonetic: "khà-nǒm-bpang",
+                english: "bread",
+                modern: "ขนมปัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ก๋วยเตี๋ยว",
+                phonetic: "gǔay-dtǐao",
+                english: "noodles",
+                modern: "ก๋วยเตี๋ยว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บะหมี่",
+                phonetic: "bà-mìi",
+                english: "egg noodles",
+                modern: "บะหมี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วุ้นเส้น",
+                phonetic: "wún-sên",
+                english: "glass noodles",
+                modern: "วุ้นเส้น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เต้าหู้",
+                phonetic: "dtâo-hûu",
+                english: "tofu",
+                modern: "เต้าหู้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถั่ว",
+                phonetic: "thùa",
+                english: "beans/nuts",
+                modern: "ถั่ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "งา",
+                phonetic: "ngaa",
+                english: "sesame",
+                modern: "งา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ข้าวโพด",
+                phonetic: "khâao-phôot",
+                english: "corn",
+                modern: "ข้าวโพด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ซอส",
+                phonetic: "sɔ́ɔs",
+                english: "sauce",
+                modern: "ซอส",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำปลา",
+                phonetic: "náam-bplaa",
+                english: "fish sauce",
+                modern: "น้ำปลา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ผงชูรส",
+                phonetic: "phǒng-chuu-rót",
+                english: "MSG",
+                modern: "ผงชูรส",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 9,
+        title: "Meats & Seafood",
+        desc: "Vocabulary related to meats & seafood",
+        words: [
+            {
+                thai: "เนื้อ",
+                phonetic: "núea",
+                english: "meat/beef",
+                modern: "เนื้อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หมู",
+                phonetic: "mǔu",
+                english: "pork",
+                modern: "หมู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไก่",
+                phonetic: "gài",
+                english: "chicken",
+                modern: "ไก่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปลา",
+                phonetic: "bplaa",
+                english: "fish",
+                modern: "ปลา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อาหารทะเล",
+                phonetic: "aa-hǎan-thá-lee",
+                english: "seafood",
+                modern: "อาหารทะเล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กุ้ง",
+                phonetic: "gûng",
+                english: "shrimp",
+                modern: "กุ้ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปู",
+                phonetic: "bpuu",
+                english: "crab",
+                modern: "ปู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หมึก",
+                phonetic: "mùek",
+                english: "squid",
+                modern: "หมึก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หอย",
+                phonetic: "hɔ̌ɔy",
+                english: "shellfish/clams",
+                modern: "หอย",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 10,
+        title: "Cooking Methods",
+        desc: "Vocabulary related to cooking methods",
+        words: [
+            {
+                thai: "ต้ม",
+                phonetic: "dtôm",
+                english: "to boil/boiled",
+                modern: "ต้ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ผัด",
+                phonetic: "phàt",
+                english: "to stir-fry/fried",
+                modern: "ผัด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทอด",
+                phonetic: "thɔ̂ɔt",
+                english: "to deep fry/deep fried",
+                modern: "ทอด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นึ่ง",
+                phonetic: "nûeng",
+                english: "to steam/steamed",
+                modern: "นึ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปิ้ง",
+                phonetic: "bpîng",
+                english: "to grill (satay style)",
+                modern: "ปิ้ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อบ",
+                phonetic: "òp",
+                english: "to bake/baked",
+                modern: "อบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ย่าง",
+                phonetic: "yâang",
+                english: "to roast/BBQ",
+                modern: "ย่าง",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 11,
+        title: "Drinks",
+        desc: "Vocabulary related to drinks",
+        words: [
+            {
+                thai: "น้ำ",
+                phonetic: "náam",
+                english: "water",
+                modern: "น้ำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำเปล่า",
+                phonetic: "náam-bplào",
+                english: "plain water",
+                modern: "น้ำเปล่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำแข็ง",
+                phonetic: "náam-khǎeng",
+                english: "ice",
+                modern: "น้ำแข็ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กาแฟ",
+                phonetic: "gaa-fae",
+                english: "coffee",
+                modern: "กาแฟ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชา",
+                phonetic: "chaa",
+                english: "tea",
+                modern: "ชา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชาเขียว",
+                phonetic: "chaa-khǐao",
+                english: "green tea",
+                modern: "ชาเขียว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นม",
+                phonetic: "nom",
+                english: "milk",
+                modern: "นม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำผลไม้",
+                phonetic: "náam-phǒn-lá-máai",
+                english: "fruit juice",
+                modern: "น้ำผลไม้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำส้ม",
+                phonetic: "náam-sôm",
+                english: "orange juice",
+                modern: "น้ำส้ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เบียร์",
+                phonetic: "bia",
+                english: "beer",
+                modern: "เบียร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไวน์",
+                phonetic: "wai",
+                english: "wine",
+                modern: "ไวน์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โซดา",
+                phonetic: "soo-daa",
+                english: "soda",
+                modern: "โซดา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้ำอัดลม",
+                phonetic: "náam-àt-lom",
+                english: "soft drink",
+                modern: "น้ำอัดลม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สมูทตี้",
+                phonetic: "sà-múut-dtîi",
+                english: "smoothie",
+                modern: "สมูทตี้",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 12,
+        title: "Fruits",
+        desc: "Vocabulary related to fruits",
+        words: [
+            {
+                thai: "ผลไม้",
+                phonetic: "phǒn-lá-máai",
+                english: "fruits",
+                modern: "ผลไม้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มะม่วง",
+                phonetic: "má-mûang",
+                english: "mango",
+                modern: "มะม่วง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มะพร้าว",
+                phonetic: "má-phráao",
+                english: "coconut",
+                modern: "มะพร้าว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แตงโม",
+                phonetic: "dtaeng-moo",
+                english: "watermelon",
+                modern: "แตงโม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กล้วย",
+                phonetic: "glûay",
+                english: "banana",
+                modern: "กล้วย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ส้ม",
+                phonetic: "sôm",
+                english: "orange",
+                modern: "ส้ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "องุ่น",
+                phonetic: "à-ngùn",
+                english: "grapes",
+                modern: "องุ่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สับปะรด",
+                phonetic: "sàp-bpà-rót",
+                english: "pineapple",
+                modern: "สับปะรด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทุเรียน",
+                phonetic: "thú-riian",
+                english: "durian",
+                modern: "ทุเรียน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มังคุด",
+                phonetic: "mang-khút",
+                english: "mangosteen",
+                modern: "มังคุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลำไย",
+                phonetic: "lam-yai",
+                english: "longan",
+                modern: "ลำไย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลิ้นจี่",
+                phonetic: "lín-jìi",
+                english: "lychee",
+                modern: "ลิ้นจี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฝรั่ง",
+                phonetic: "fà-ràng",
+                english: "guava",
+                modern: "ฝรั่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชมพู่",
+                phonetic: "chom-phûu",
+                english: "rose apple",
+                modern: "ชมพู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลูกแพร์",
+                phonetic: "lûuk-phae",
+                english: "pear",
+                modern: "ลูกแพร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แอปเปิล",
+                phonetic: "áep-bpôen",
+                english: "apple",
+                modern: "แอปเปิล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สตรอเบอร์รี่",
+                phonetic: "sà-dtrɔɔ-bəə-rîi",
+                english: "strawberry",
+                modern: "สตรอเบอร์รี่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เงาะ",
+                phonetic: "ngɔ́",
+                english: "rambutan",
+                modern: "เงาะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แก้วมังกร",
+                phonetic: "gâaew-mang-gɔɔn",
+                english: "dragon fruit",
+                modern: "แก้วมังกร",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 13,
+        title: "Colors",
+        desc: "Vocabulary related to colors",
+        words: [
+            {
+                thai: "สี",
+                phonetic: "sǐi",
+                english: "color",
+                modern: "สี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีขาว",
+                phonetic: "sǐi-khǎao",
+                english: "white",
+                modern: "สีขาว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีดำ",
+                phonetic: "sǐi-dam",
+                english: "black",
+                modern: "สีดำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีแดง",
+                phonetic: "sǐi-daeng",
+                english: "red",
+                modern: "สีแดง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีฟ้า",
+                phonetic: "sǐi-fáa",
+                english: "blue (sky)",
+                modern: "สีฟ้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีเขียว",
+                phonetic: "sǐi-khǐao",
+                english: "green",
+                modern: "สีเขียว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีเหลือง",
+                phonetic: "sǐi-lǔeang",
+                english: "yellow",
+                modern: "สีเหลือง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีส้ม",
+                phonetic: "sǐi-sôm",
+                english: "orange",
+                modern: "สีส้ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีชมพู",
+                phonetic: "sǐi-chom-phuu",
+                english: "pink",
+                modern: "สีชมพู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีม่วง",
+                phonetic: "sǐi-mûang",
+                english: "purple",
+                modern: "สีม่วง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีน้ำตาล",
+                phonetic: "sǐi-náam-dtaan",
+                english: "brown",
+                modern: "สีน้ำตาล",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีเทา",
+                phonetic: "sǐi-thao",
+                english: "gray",
+                modern: "สีเทา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีทอง",
+                phonetic: "sǐi-thɔɔng",
+                english: "gold",
+                modern: "สีทอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีเงิน",
+                phonetic: "sǐi-ngoen",
+                english: "silver",
+                modern: "สีเงิน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีน้ำเงิน",
+                phonetic: "sǐi-náam-ngoen",
+                english: "blue (dark)",
+                modern: "สีน้ำเงิน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สีครีม",
+                phonetic: "sǐi-khriim",
+                english: "cream",
+                modern: "สีครีม",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 14,
+        title: "Classifiers",
+        desc: "Vocabulary related to classifiers",
+        words: [
+            {
+                thai: "จาน",
+                phonetic: "jaan",
+                english: "plate (for dishes)",
+                modern: "จาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แก้ว",
+                phonetic: "gâaew",
+                english: "glass/cup (for drinks)",
+                modern: "แก้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถ้วย",
+                phonetic: "thûay",
+                english: "bowl (for soup/rice)",
+                modern: "ถ้วย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขวด",
+                phonetic: "khùat",
+                english: "bottle",
+                modern: "ขวด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คน",
+                phonetic: "khon",
+                english: "people/person",
+                modern: "คน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตัว",
+                phonetic: "dtua",
+                english: "animals/clothing/furniture",
+                modern: "ตัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อัน",
+                phonetic: "an",
+                english: "objects (general)",
+                modern: "อัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชิ้น",
+                phonetic: "chín",
+                english: "piece (of food/cake)",
+                modern: "ชิ้น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลูก",
+                phonetic: "lûuk",
+                english: "round objects (balls/fruits)",
+                modern: "ลูก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ใบ",
+                phonetic: "bai",
+                english: "flat objects (paper/leaves)",
+                modern: "ใบ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แผ่น",
+                phonetic: "phàen",
+                english: "thin flat objects (CDs/slices)",
+                modern: "แผ่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คัน",
+                phonetic: "khan",
+                english: "vehicles/umbrellas",
+                modern: "คัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เม็ด",
+                phonetic: "mét",
+                english: "small round items (pills/seeds)",
+                modern: "เม็ด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หลัง",
+                phonetic: "lǎng",
+                english: "houses/buildings",
+                modern: "หลัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้อง",
+                phonetic: "hɔ̂ɔng",
+                english: "rooms",
+                modern: "ห้อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฟอง",
+                phonetic: "fɔɔng",
+                english: "eggs",
+                modern: "ฟอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เล่ม",
+                phonetic: "lêm",
+                english: "books/knives",
+                modern: "เล่ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เครื่อง",
+                phonetic: "khrûeang",
+                english: "machines/devices",
+                modern: "เครื่อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คู่",
+                phonetic: "khûu",
+                english: "pairs",
+                modern: "คู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กล่อง",
+                phonetic: "glɔ̀ng",
+                english: "boxes/cartons",
+                modern: "กล่อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถุง",
+                phonetic: "thǔng",
+                english: "bags",
+                modern: "ถุง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กระป๋อง",
+                phonetic: "grà-bpɔ̌ng",
+                english: "cans/tins",
+                modern: "กระป๋อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชุด",
+                phonetic: "chút",
+                english: "sets (clothing/furniture)",
+                modern: "ชุด",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 15,
+        title: "Rooms & Furniture",
+        desc: "Vocabulary related to rooms & furniture",
+        words: [
+            {
+                thai: "ห้อง",
+                phonetic: "hɔ̂ɔng",
+                english: "room",
+                modern: "ห้อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้องนอน",
+                phonetic: "hɔ̂ɔng-nɔɔn",
+                english: "bedroom",
+                modern: "ห้องนอน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้องน้ำ",
+                phonetic: "hɔ̂ɔng-náam",
+                english: "bathroom",
+                modern: "ห้องน้ำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห้องนั่งเล่น",
+                phonetic: "hɔ̂ɔng-nâng-lên",
+                english: "living room",
+                modern: "ห้องนั่งเล่น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ครัว",
+                phonetic: "khrua",
+                english: "kitchen",
+                modern: "ครัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เตียง",
+                phonetic: "dtiang",
+                english: "bed",
+                modern: "เตียง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โต๊ะ",
+                phonetic: "dtó",
+                english: "table",
+                modern: "โต๊ะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เก้าอี้",
+                phonetic: "gâo-îi",
+                english: "chair",
+                modern: "เก้าอี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โซฟา",
+                phonetic: "soo-faa",
+                english: "sofa",
+                modern: "โซฟา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตู้",
+                phonetic: "dtûu",
+                english: "cabinet/wardrobe",
+                modern: "ตู้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตู้เย็น",
+                phonetic: "dtûu-yen",
+                english: "refrigerator",
+                modern: "ตู้เย็น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โคมไฟ",
+                phonetic: "khoom-fai",
+                english: "lamp",
+                modern: "โคมไฟ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทีวี",
+                phonetic: "thii-wii",
+                english: "television",
+                modern: "ทีวี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พัดลม",
+                phonetic: "phát-lom",
+                english: "fan",
+                modern: "พัดลม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แอร์",
+                phonetic: "ae",
+                english: "air conditioner",
+                modern: "แอร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หน้าต่าง",
+                phonetic: "nâa-dtàang",
+                english: "window",
+                modern: "หน้าต่าง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ประตู",
+                phonetic: "bprà-dtuu",
+                english: "door",
+                modern: "ประตู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พรม",
+                phonetic: "phrom",
+                english: "carpet/rug",
+                modern: "พรม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ผ้าม่าน",
+                phonetic: "phâa-mâan",
+                english: "curtain",
+                modern: "ผ้าม่าน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หมอน",
+                phonetic: "mɔ̌ɔn",
+                english: "pillow",
+                modern: "หมอน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ผ้าห่ม",
+                phonetic: "phâa-hòm",
+                english: "blanket",
+                modern: "ผ้าห่ม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กระจก",
+                phonetic: "grà-jòk",
+                english: "mirror",
+                modern: "กระจก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รูปภาพ",
+                phonetic: "rûup-phâap",
+                english: "picture/photo",
+                modern: "รูปภาพ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นาฬิกา",
+                phonetic: "naa-lí-gaa",
+                english: "clock",
+                modern: "นาฬิกา",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 16,
+        title: "Time",
+        desc: "Vocabulary related to time",
+        words: [
+            {
+                thai: "ชั่วโมง",
+                phonetic: "chûa-moong",
+                english: "Hour",
+                modern: "ชั่วโมง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นาที",
+                phonetic: "naa-thii",
+                english: "Minute",
+                modern: "นาที",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วินาที",
+                phonetic: "wí-naa-thii",
+                english: "Second",
+                modern: "วินาที",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ครึ่ง",
+                phonetic: "khrûeng",
+                english: "Half",
+                modern: "ครึ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นาน",
+                phonetic: "naan",
+                english: "Long (time)",
+                modern: "นาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เช้า",
+                phonetic: "cháo",
+                english: "Early",
+                modern: "เช้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สาย",
+                phonetic: "sǎai",
+                english: "Late",
+                modern: "สาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หลัง",
+                phonetic: "lǎng",
+                english: "After",
+                modern: "หลัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ก่อน",
+                phonetic: "gɔ̀ɔn",
+                english: "Before",
+                modern: "ก่อน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รอ",
+                phonetic: "rɔɔ",
+                english: "To wait",
+                modern: "รอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รอสักครู่",
+                phonetic: "rɔɔ-sàk-khrûu",
+                english: "Wait a moment (formal)",
+                modern: "รอสักครู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รอแป๊ปนึง",
+                phonetic: "rɔɔ-bpáp-nueng",
+                english: "Wait a sec (casual)",
+                modern: "รอแป๊ปนึง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตอนนี้",
+                phonetic: "dtawn-níi",
+                english: "Now",
+                modern: "ตอนนี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เดี๋ยวนี้",
+                phonetic: "dǐao-níi",
+                english: "Right now",
+                modern: "เดี๋ยวนี้",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 17,
+        title: "Calendar",
+        desc: "Vocabulary related to calendar",
+        words: [
+            {
+                thai: "วันจันทร์",
+                phonetic: "wan-jan",
+                english: "Monday",
+                modern: "วันจันทร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันอังคาร",
+                phonetic: "wan-ang-khaan",
+                english: "Tuesday",
+                modern: "วันอังคาร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันพุธ",
+                phonetic: "wan-phút",
+                english: "Wednesday",
+                modern: "วันพุธ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันพฤหัสบดี",
+                phonetic: "wan-phá-rú-hàt-sà-bɔɔ-dii",
+                english: "Thursday",
+                modern: "วันพฤหัสบดี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันศุกร์",
+                phonetic: "wan-sùk",
+                english: "Friday",
+                modern: "วันศุกร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันเสาร์",
+                phonetic: "wan-sǎo",
+                english: "Saturday",
+                modern: "วันเสาร์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันอาทิตย์",
+                phonetic: "wan-aa-thít",
+                english: "Sunday",
+                modern: "วันอาทิตย์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันเสาร์อาทิตย์",
+                phonetic: "wan-sǎo-aa-thít",
+                english: "Weekend",
+                modern: "วันเสาร์อาทิตย์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วัน",
+                phonetic: "wan",
+                english: "Day",
+                modern: "วัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันที่",
+                phonetic: "wan-thîi",
+                english: "Date",
+                modern: "วันที่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันนี้",
+                phonetic: "wan-níi",
+                english: "Today",
+                modern: "วันนี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พรุ่งนี้",
+                phonetic: "phrûng-níi",
+                english: "Tomorrow",
+                modern: "พรุ่งนี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อวาน",
+                phonetic: "mûea-waan",
+                english: "Yesterday",
+                modern: "เมื่อวาน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันมะรืนนี้",
+                phonetic: "wan-má-ruuen-níi",
+                english: "Day after tomorrow",
+                modern: "วันมะรืนนี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อวานซืน",
+                phonetic: "mûea-waan-suuen",
+                english: "Day before yesterday",
+                modern: "เมื่อวานซืน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันหยุด",
+                phonetic: "wan-yùt",
+                english: "Holiday",
+                modern: "วันหยุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันเกิด",
+                phonetic: "wan-gòet",
+                english: "Birthday",
+                modern: "วันเกิด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วันธรรมดา",
+                phonetic: "wan-tham-má-daa",
+                english: "Weekday",
+                modern: "วันธรรมดา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทุก",
+                phonetic: "thúk",
+                english: "Every",
+                modern: "ทุก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทั้ง",
+                phonetic: "tháng",
+                english: "All/Throughout",
+                modern: "ทั้ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อาทิตย์",
+                phonetic: "aa-thít",
+                english: "Week",
+                modern: "อาทิตย์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สัปดาห์",
+                phonetic: "sàp-daa",
+                english: "Week (formal)",
+                modern: "สัปดาห์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เดือน",
+                phonetic: "duean",
+                english: "Month",
+                modern: "เดือน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปี",
+                phonetic: "bpii",
+                english: "Year",
+                modern: "ปี",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 18,
+        title: "Frequency",
+        desc: "Vocabulary related to frequency",
+        words: [
+            {
+                thai: "ทุกวัน",
+                phonetic: "thúk-wan",
+                english: "Every day",
+                modern: "ทุกวัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บ่อยๆ",
+                phonetic: "bɔ̀i-bɔ̀i",
+                english: "Often/Frequently",
+                modern: "บ่อยๆ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บางครั้ง",
+                phonetic: "baang-khráng",
+                english: "Sometimes",
+                modern: "บางครั้ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "บางที",
+                phonetic: "baang-thii",
+                english: "Sometimes/Maybe",
+                modern: "บางที",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เป็นครั้งคราว",
+                phonetic: "bpen-khráng-khraao",
+                english: "Occasionally",
+                modern: "เป็นครั้งคราว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แทบไม่เคย",
+                phonetic: "thâep-mâi-khoei",
+                english: "Rarely/Hardly ever",
+                modern: "แทบไม่เคย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไม่เคย",
+                phonetic: "mâi-khoei",
+                english: "Never",
+                modern: "ไม่เคย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เคย",
+                phonetic: "khoei",
+                english: "Ever/Used to",
+                modern: "เคย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เสมอ",
+                phonetic: "sà-měr",
+                english: "Always",
+                modern: "เสมอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปกติ",
+                phonetic: "bpòk-gà-dtì",
+                english: "Usually/Normally",
+                modern: "ปกติ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มักจะ",
+                phonetic: "mák-jà",
+                english: "Often/Tend to",
+                modern: "มักจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หนึ่งครั้ง",
+                phonetic: "nùeng-khráng",
+                english: "Once",
+                modern: "หนึ่งครั้ง",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 19,
+        title: "Past",
+        desc: "Vocabulary related to past",
+        words: [
+            {
+                thai: "แล้ว",
+                phonetic: "láew",
+                english: "Already/Completed action marker",
+                modern: "แล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อ",
+                phonetic: "mûea",
+                english: "When (past)",
+                modern: "เมื่อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อคืน",
+                phonetic: "mûea-khuuen",
+                english: "Last night",
+                modern: "เมื่อคืน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อกี้",
+                phonetic: "mûea-gîi",
+                english: "Just now/A moment ago",
+                modern: "เมื่อกี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมื่อสักครู่",
+                phonetic: "mûea-sàk-khrûu",
+                english: "A while ago",
+                modern: "เมื่อสักครู่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สัปดาห์ที่แล้ว",
+                phonetic: "sàp-daa-thîi-láew",
+                english: "Last week",
+                modern: "สัปดาห์ที่แล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เดือนที่แล้ว",
+                phonetic: "duean-thîi-láew",
+                english: "Last month",
+                modern: "เดือนที่แล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปีที่แล้ว",
+                phonetic: "bpii-thîi-láew",
+                english: "Last year",
+                modern: "ปีที่แล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เสร็จ",
+                phonetic: "sèt",
+                english: "Finished/Completed",
+                modern: "เสร็จ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เสร็จแล้ว",
+                phonetic: "sèt-láew",
+                english: "Already finished",
+                modern: "เสร็จแล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไปแล้ว",
+                phonetic: "bpai-láew",
+                english: "Already went",
+                modern: "ไปแล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กินแล้ว",
+                phonetic: "gin-láew",
+                english: "Already ate",
+                modern: "กินแล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ทำแล้ว",
+                phonetic: "tham-láew",
+                english: "Already did",
+                modern: "ทำแล้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ได้",
+                phonetic: "dâi",
+                english: "Got to/Was able to",
+                modern: "ได้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เคย",
+                phonetic: "khoei",
+                english: "Used to/Have ever",
+                modern: "เคย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เคยไป",
+                phonetic: "khoei-bpai",
+                english: "Have been to",
+                modern: "เคยไป",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เพิ่ง",
+                phonetic: "phôeng",
+                english: "Just/Recently",
+                modern: "เพิ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เพิ่งจะ",
+                phonetic: "phôeng-jà",
+                english: "Just (did something)",
+                modern: "เพิ่งจะ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 20,
+        title: "Future",
+        desc: "Vocabulary related to future",
+        words: [
+            {
+                thai: "จะ",
+                phonetic: "jà",
+                english: "Will/Going to",
+                modern: "จะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กำลังจะ",
+                phonetic: "gam-lang-jà",
+                english: "About to/Going to",
+                modern: "กำลังจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คิดว่าจะ",
+                phonetic: "khít-wâa-jà",
+                english: "Think will/Planning to",
+                modern: "คิดว่าจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อยากจะ",
+                phonetic: "yàak-jà",
+                english: "Want to",
+                modern: "อยากจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ต้องการ",
+                phonetic: "dtɔ̂ng-gaan",
+                english: "Want/Need",
+                modern: "ต้องการ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ต้อง",
+                phonetic: "dtɔ̂ng",
+                english: "Must/Have to",
+                modern: "ต้อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ควร",
+                phonetic: "khuan",
+                english: "Should",
+                modern: "ควร",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ควรจะ",
+                phonetic: "khuan-jà",
+                english: "Should/Ought to",
+                modern: "ควรจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น่าจะ",
+                phonetic: "nâa-jà",
+                english: "Probably will",
+                modern: "น่าจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คง",
+                phonetic: "khong",
+                english: "Probably/Likely",
+                modern: "คง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คงจะ",
+                phonetic: "khong-jà",
+                english: "Will probably",
+                modern: "คงจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พรุ่งนี้",
+                phonetic: "phrûng-níi",
+                english: "Tomorrow",
+                modern: "พรุ่งนี้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สัปดาห์หน้า",
+                phonetic: "sàp-daa-nâa",
+                english: "Next week",
+                modern: "สัปดาห์หน้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เดือนหน้า",
+                phonetic: "duean-nâa",
+                english: "Next month",
+                modern: "เดือนหน้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปีหน้า",
+                phonetic: "bpii-nâa",
+                english: "Next year",
+                modern: "ปีหน้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วางแผน",
+                phonetic: "waang-phǎen",
+                english: "To plan",
+                modern: "วางแผน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตั้งใจ",
+                phonetic: "dtâng-jai",
+                english: "To intend/Determine",
+                modern: "ตั้งใจ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เตรียม",
+                phonetic: "dtriiam",
+                english: "To prepare",
+                modern: "เตรียม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จะไป",
+                phonetic: "jà-bpai",
+                english: "Will go",
+                modern: "จะไป",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จะมา",
+                phonetic: "jà-maa",
+                english: "Will come",
+                modern: "จะมา",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 21,
+        title: "Comparison",
+        desc: "Vocabulary related to comparison",
+        words: [
+            {
+                thai: "กว่า",
+                phonetic: "gwàa",
+                english: "Than/More than",
+                modern: "กว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มากกว่า",
+                phonetic: "mâak-gwàa",
+                english: "More than",
+                modern: "มากกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น้อยกว่า",
+                phonetic: "nɔ́ɔi-gwàa",
+                english: "Less than",
+                modern: "น้อยกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดีกว่า",
+                phonetic: "dii-gwàa",
+                english: "Better than",
+                modern: "ดีกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เลวกว่า",
+                phonetic: "leew-gwàa",
+                english: "Worse than",
+                modern: "เลวกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ใหญ่กว่า",
+                phonetic: "yài-gwàa",
+                english: "Bigger than",
+                modern: "ใหญ่กว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เล็กกว่า",
+                phonetic: "lék-gwàa",
+                english: "Smaller than",
+                modern: "เล็กกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แพงกว่า",
+                phonetic: "phaeng-gwàa",
+                english: "More expensive than",
+                modern: "แพงกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถูกกว่า",
+                phonetic: "thùuk-gwàa",
+                english: "Cheaper than",
+                modern: "ถูกกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สูงกว่า",
+                phonetic: "sǔung-gwàa",
+                english: "Taller/Higher than",
+                modern: "สูงกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เตี้ยกว่า",
+                phonetic: "dtîia-gwàa",
+                english: "Shorter than",
+                modern: "เตี้ยกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เหมือนกัน",
+                phonetic: "mǔean-gan",
+                english: "Same/Similar",
+                modern: "เหมือนกัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เหมือน",
+                phonetic: "mǔean",
+                english: "Like/Similar to",
+                modern: "เหมือน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ต่างกัน",
+                phonetic: "dtàang-gan",
+                english: "Different",
+                modern: "ต่างกัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ต่าง",
+                phonetic: "dtàang",
+                english: "Different from",
+                modern: "ต่าง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เท่ากัน",
+                phonetic: "thâo-gan",
+                english: "Equal/Same amount",
+                modern: "เท่ากัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยิ่งกว่า",
+                phonetic: "yîng-gwàa",
+                english: "Even more than",
+                modern: "ยิ่งกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เทียบ",
+                phonetic: "thîiap",
+                english: "To compare",
+                modern: "เทียบ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 22,
+        title: "Superlative",
+        desc: "Vocabulary related to superlative",
+        words: [
+            {
+                thai: "ที่สุด",
+                phonetic: "thîi-sùt",
+                english: "The most/Superlative marker",
+                modern: "ที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มากที่สุด",
+                phonetic: "mâak-thîi-sùt",
+                english: "The most",
+                modern: "มากที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดีที่สุด",
+                phonetic: "dii-thîi-sùt",
+                english: "The best",
+                modern: "ดีที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เลวที่สุด",
+                phonetic: "leew-thîi-sùt",
+                english: "The worst",
+                modern: "เลวที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ใหญ่ที่สุด",
+                phonetic: "yài-thîi-sùt",
+                english: "The biggest",
+                modern: "ใหญ่ที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เล็กที่สุด",
+                phonetic: "lék-thîi-sùt",
+                english: "The smallest",
+                modern: "เล็กที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สุดยอด",
+                phonetic: "sùt-yɔ̂ɔt",
+                english: "Excellent/The best",
+                modern: "สุดยอด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เยี่ยม",
+                phonetic: "yîiam",
+                english: "Excellent/Great",
+                modern: "เยี่ยม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แย่",
+                phonetic: "yâe",
+                english: "Bad/Terrible",
+                modern: "แย่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แย่ที่สุด",
+                phonetic: "yâe-thîi-sùt",
+                english: "The worst",
+                modern: "แย่ที่สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สุด",
+                phonetic: "sùt",
+                english: "Extreme/Ultimate",
+                modern: "สุด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ที่หนึ่ง",
+                phonetic: "thîi-nùeng",
+                english: "Number one/First place",
+                modern: "ที่หนึ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อันดับ",
+                phonetic: "an-dàp",
+                english: "Rank/Ranking",
+                modern: "อันดับ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชั้นนำ",
+                phonetic: "chán-nam",
+                english: "Top-tier/Leading",
+                modern: "ชั้นนำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เป็นเลิศ",
+                phonetic: "bpen-lôet",
+                english: "Excellent/Superior",
+                modern: "เป็นเลิศ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 23,
+        title: "Invitation",
+        desc: "Vocabulary related to invitation",
+        words: [
+            {
+                thai: "ไปด้วยกันไหม",
+                phonetic: "bpai-dûay-gan-mǎi",
+                english: "Go together?",
+                modern: "ไปด้วยกันไหม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "อยากไปไหม",
+                phonetic: "yàak-bpai-mǎi",
+                english: "Want to go?",
+                modern: "อยากไปไหม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชวน",
+                phonetic: "chuan",
+                english: "To invite",
+                modern: "ชวน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เจอกัน",
+                phonetic: "jəə-gan",
+                english: "Meet up/See each other",
+                modern: "เจอกัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มาหา",
+                phonetic: "maa-hǎa",
+                english: "Come see/Visit",
+                modern: "มาหา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เจอ",
+                phonetic: "jəə",
+                english: "To meet",
+                modern: "เจอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ได้",
+                phonetic: "dâi",
+                english: "Can/Okay",
+                modern: "ได้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ได้เลย",
+                phonetic: "dâi-loei",
+                english: "Sure!/Of course!",
+                modern: "ได้เลย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไม่ได้",
+                phonetic: "mâi-dâi",
+                english: "Cannot/Not possible",
+                modern: "ไม่ได้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คงไม่ไหว",
+                phonetic: "khong-mâi-wǎi",
+                english: "Probably can't manage",
+                modern: "คงไม่ไหว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไม่ว่าง",
+                phonetic: "mâi-wâang",
+                english: "Not free/Busy",
+                modern: "ไม่ว่าง",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 24,
+        title: "Suggestion",
+        desc: "Vocabulary related to suggestion",
+        words: [
+            {
+                thai: "ควรจะ",
+                phonetic: "khuan-jà",
+                english: "Should",
+                modern: "ควรจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น่าจะ",
+                phonetic: "nâa-jà",
+                english: "Probably should",
+                modern: "น่าจะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลองสิ",
+                phonetic: "lɔɔng-sì",
+                english: "Try it!/Give it a try",
+                modern: "ลองสิ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลอง",
+                phonetic: "lɔɔng",
+                english: "To try",
+                modern: "ลอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดีกว่า",
+                phonetic: "dii-gwàa",
+                english: "Better (to)",
+                modern: "ดีกว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น่า",
+                phonetic: "nâa",
+                english: "Should/Worth",
+                modern: "น่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "น่าสนใจ",
+                phonetic: "nâa-sǒn-jai",
+                english: "Interesting",
+                modern: "น่าสนใจ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถ้า",
+                phonetic: "thâa",
+                english: "If",
+                modern: "ถ้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ถ้าเป็นไปได้",
+                phonetic: "thâa-bpen-bpai-dâi",
+                english: "If possible",
+                modern: "ถ้าเป็นไปได้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แนะนำ",
+                phonetic: "náe-nam",
+                english: "To recommend/Suggest",
+                modern: "แนะนำ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เสนอ",
+                phonetic: "sà-nə̌ə",
+                english: "To propose/Suggest",
+                modern: "เสนอ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 25,
+        title: "Opinion",
+        desc: "Vocabulary related to opinion",
+        words: [
+            {
+                thai: "คิดว่า",
+                phonetic: "khít-wâa",
+                english: "Think that",
+                modern: "คิดว่า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เห็นด้วย",
+                phonetic: "hěn-dûay",
+                english: "Agree",
+                modern: "เห็นด้วย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไม่เห็นด้วย",
+                phonetic: "mâi-hěn-dûay",
+                english: "Disagree",
+                modern: "ไม่เห็นด้วย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "รู้สึก",
+                phonetic: "rúu-sùek",
+                english: "To feel",
+                modern: "รู้สึก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เชื่อ",
+                phonetic: "chûea",
+                english: "To believe",
+                modern: "เชื่อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เข้าใจ",
+                phonetic: "khâo-jai",
+                english: "To understand",
+                modern: "เข้าใจ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เห็น",
+                phonetic: "hěn",
+                english: "To see/Think",
+                modern: "เห็น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตามใจ",
+                phonetic: "dtaam-jai",
+                english: "Up to you/As you like",
+                modern: "ตามใจ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 26,
+        title: "Emotion",
+        desc: "Vocabulary related to emotion",
+        words: [
+            {
+                thai: "มีความสุข",
+                phonetic: "mii-khwaam-sùk",
+                english: "Happy",
+                modern: "มีความสุข",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สนุก",
+                phonetic: "sà-nùk",
+                english: "Fun/Enjoyable",
+                modern: "สนุก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เศร้า",
+                phonetic: "sâo",
+                english: "Sad",
+                modern: "เศร้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "โกรธ",
+                phonetic: "gròot",
+                english: "Angry",
+                modern: "โกรธ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตื่นเต้น",
+                phonetic: "dtùuen-dtên",
+                english: "Excited",
+                modern: "ตื่นเต้น",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เหนื่อย",
+                phonetic: "nùeai",
+                english: "Tired",
+                modern: "เหนื่อย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เบื่อ",
+                phonetic: "bùea",
+                english: "Bored",
+                modern: "เบื่อ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยุ่ง",
+                phonetic: "yûng",
+                english: "Busy",
+                modern: "ยุ่ง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เครียด",
+                phonetic: "khrîat",
+                english: "Stressed",
+                modern: "เครียด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ห่วง",
+                phonetic: "hùang",
+                english: "Worried about",
+                modern: "ห่วง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กลัว",
+                phonetic: "glua",
+                english: "Scared/Afraid",
+                modern: "กลัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ดีใจ",
+                phonetic: "dii-jai",
+                english: "Glad/Happy",
+                modern: "ดีใจ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 27,
+        title: "Linking",
+        desc: "Vocabulary related to linking",
+        words: [
+            {
+                thai: "เพราะ",
+                phonetic: "phrɔ́",
+                english: "Because",
+                modern: "เพราะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ก็",
+                phonetic: "gɔ̂ɔ",
+                english: "Also/Well (particle)",
+                modern: "ก็",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แต่",
+                phonetic: "dtàe",
+                english: "But",
+                modern: "แต่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "และ",
+                phonetic: "láe",
+                english: "And",
+                modern: "และ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หรือ",
+                phonetic: "rǔue",
+                english: "Or",
+                modern: "หรือ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 28,
+        title: "Body",
+        desc: "Vocabulary related to body",
+        words: [
+            {
+                thai: "ศีรษะ",
+                phonetic: "sǐi-sà",
+                english: "Head",
+                modern: "ศีรษะ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หัว",
+                phonetic: "hǔa",
+                english: "Head (informal)",
+                modern: "หัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หน้า",
+                phonetic: "nâa",
+                english: "Face",
+                modern: "หน้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตา",
+                phonetic: "dtaa",
+                english: "Eye(s)",
+                modern: "ตา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หู",
+                phonetic: "hǔu",
+                english: "Ear(s)",
+                modern: "หู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จมูก",
+                phonetic: "jà-mùuk",
+                english: "Nose",
+                modern: "จมูก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปาก",
+                phonetic: "bpàak",
+                english: "Mouth",
+                modern: "ปาก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฟัน",
+                phonetic: "fan",
+                english: "Tooth/Teeth",
+                modern: "ฟัน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "คอ",
+                phonetic: "khɔɔ",
+                english: "Neck/Throat",
+                modern: "คอ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แขน",
+                phonetic: "khǎen",
+                english: "Arm",
+                modern: "แขน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มือ",
+                phonetic: "mue",
+                english: "Hand",
+                modern: "มือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นิ้ว",
+                phonetic: "níu",
+                english: "Finger",
+                modern: "นิ้ว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขา",
+                phonetic: "khǎa",
+                english: "Leg",
+                modern: "ขา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เท้า",
+                phonetic: "tháo",
+                english: "Foot/Feet",
+                modern: "เท้า",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หลัง",
+                phonetic: "lǎng",
+                english: "Back",
+                modern: "หลัง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ท้อง",
+                phonetic: "thɔ́ɔng",
+                english: "Stomach/Belly",
+                modern: "ท้อง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หัวใจ",
+                phonetic: "hǔa-jai",
+                english: "Heart",
+                modern: "หัวใจ",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 29,
+        title: "Fauna",
+        desc: "Vocabulary related to fauna",
+        words: [
+            {
+                thai: "แมว",
+                phonetic: "maew",
+                english: "Cat",
+                modern: "แมว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นก",
+                phonetic: "nók",
+                english: "Bird",
+                modern: "นก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ปลา",
+                phonetic: "bplaa",
+                english: "Fish",
+                modern: "ปลา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ไก่",
+                phonetic: "gài",
+                english: "Chicken",
+                modern: "ไก่",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หมู",
+                phonetic: "mǔu",
+                english: "Pig",
+                modern: "หมู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "วัว",
+                phonetic: "wua",
+                english: "Cow",
+                modern: "วัว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ควาย",
+                phonetic: "khwaai",
+                english: "Buffalo (Water Buffalo)",
+                modern: "ควาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ช้าง",
+                phonetic: "cháang",
+                english: "Elephant",
+                modern: "ช้าง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ลิง",
+                phonetic: "ling",
+                english: "Monkey",
+                modern: "ลิง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เสือ",
+                phonetic: "sǔea",
+                english: "Tiger",
+                modern: "เสือ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิงโต",
+                phonetic: "sǐng-dtoh",
+                english: "Lion",
+                modern: "สิงโต",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "งู",
+                phonetic: "nguu",
+                english: "Snake",
+                modern: "งู",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ม้าลาย",
+                phonetic: "máa-laai",
+                english: "Zebra",
+                modern: "ม้าลาย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยีราฟ",
+                phonetic: "yii-ráap",
+                english: "Giraffe",
+                modern: "ยีราฟ",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "หมี",
+                phonetic: "měe",
+                english: "Bear",
+                modern: "หมี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จระเข้",
+                phonetic: "jɔɔ-rá-khêe",
+                english: "Crocodile",
+                modern: "จระเข้",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ฮิปโป",
+                phonetic: "híp-bpoh",
+                english: "Hippopotamus",
+                modern: "ฮิปโป",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "นกเงือก",
+                phonetic: "nók-ngûeak",
+                english: "Hornbill",
+                modern: "นกเงือก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ชะนี",
+                phonetic: "chá-nii",
+                english: "Gibbon",
+                modern: "ชะนี",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตุ๊กแก",
+                phonetic: "dtúk-gae",
+                english: "Gecko (Large)",
+                modern: "ตุ๊กแก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "จิ้งจก",
+                phonetic: "jîng-jòk",
+                english: "House Lizard (Small)",
+                modern: "จิ้งจก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตัวเงินตัวทอง",
+                phonetic: "dtua-ngoen-dtua-thɔɔng",
+                english: "Monitor Lizard",
+                modern: "ตัวเงินตัวทอง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ยุง",
+                phonetic: "yung",
+                english: "Mosquito",
+                modern: "ยุง",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มด",
+                phonetic: "mót",
+                english: "Ant",
+                modern: "มด",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "แมลง",
+                phonetic: "má-laeng",
+                english: "Insect",
+                modern: "แมลง",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    }
+];
+
+// --- APP LOGIC ---
+const app = {
+    currentLesson: null,
+    fontMode: 'traditional', // 'traditional', 'modern', 'both'
+    
+    init: function() {
+        this.renderLessonGrid();
+        tts.loadVoices();
+        
+        // Initialize font mode select
+        const fontSelect = document.getElementById('font-mode-select');
+        if (fontSelect) {
+            fontSelect.value = this.fontMode;
+        }
+        
+        // Setup simple navigation
+        window.onclick = function(event) {
+            const mod1 = document.getElementById('quiz-modal');
+            const mod2 = document.getElementById('fc-modal');
+            if (event.target == mod1) mod1.classList.remove('active');
+            if (event.target == mod2) mod2.classList.remove('active');
+        };
+        
+        // Setup search input
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    app.performSearch();
+                }
+            });
+        }
+    },
+
+    showSection: function(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    },
+
+    setFontMode: function(mode) {
+        this.fontMode = mode;
+        // Refresh current displays
+        if (this.currentLesson) {
+            this.loadLesson(this.currentLesson.id);
+        }
+        // Refresh search results if visible
+        const searchResults = document.getElementById('search-results');
+        if (searchResults && searchResults.innerHTML.trim()) {
+            this.performSearch();
+        }
+        // Refresh flashcards if open
+        if (document.getElementById('fc-modal').classList.contains('active')) {
+            flashcards.refresh();
+        }
+    },
+
+    getThaiText: function(word) {
+        if (this.fontMode === 'traditional') {
+            return word.thai;
+        } else if (this.fontMode === 'modern') {
+            return word.modern || word.thai;
+        } else if (this.fontMode === 'both') {
+            const trad = word.thai;
+            const mod = word.modern || word.thai;
+            return trad === mod ? trad : `${trad} / ${mod}`;
+        }
+        return word.thai;
+    },
+
+    getFont: function(word) {
+        if (this.fontMode === 'traditional') {
+            return 'Arial Unicode MS';
+        } else {
+            return 'Sukhumvit Set';
+        }
+    },
+
+    toggleFont: function(thaiDiv, tradText, modText) {
+        const current = thaiDiv.getAttribute('data-current') || 'traditional';
+        if (current === 'traditional') {
+            thaiDiv.textContent = modText;
+            thaiDiv.style.fontFamily = "'Sukhumvit Set', sans-serif";
+            thaiDiv.setAttribute('data-current', 'modern');
+        } else {
+            thaiDiv.textContent = tradText;
+            thaiDiv.style.fontFamily = "'Arial Unicode MS', sans-serif";
+            thaiDiv.setAttribute('data-current', 'traditional');
+        }
+    },
+
+    renderLessonGrid: function() {
+        const grid = document.getElementById('lesson-grid');
+        grid.innerHTML = lessonsData.map(l => `
+            <div class="lesson-card" onclick="app.loadLesson(${l.id})">
+                <h3 style="color:var(--secondary);">${l.title}</h3>
+                <p style="color:#666; margin: 10px 0;">${l.desc}</p>
+                <div style="font-size:0.85rem; color:#888;">${l.words.length} words</div>
+            </div>
+        `).join('');
+    },
+
+    loadLesson: function(id) {
+        this.currentLesson = lessonsData.find(l => l.id === id);
+        if(!this.currentLesson) return;
+
+        document.getElementById('lesson-header').innerHTML = `
+            <h2 style="color:var(--secondary); font-size:2rem;">${this.currentLesson.title}</h2>
+            <p>${this.currentLesson.desc}</p>
+        `;
+
+        const container = document.getElementById('vocab-container');
+        container.innerHTML = this.currentLesson.words.map(w => `
+            <div class="vocab-item">
+                <button class="btn btn-primary" style="padding:10px; border-radius:50%; width:40px; height:40px; justify-content:center;" onclick="tts.speak('${this.getThaiText(w)}')">🔊</button>
+                <div>
+                    <div class="thai-lg" style="font-family: '${this.getFont(w)}', sans-serif;" data-current="traditional">${this.getThaiText(w)}</div>
+                    <div class="phonetic">${w.phonetic}</div>
+                    <div style="color:#444;">${w.english}</div>
+                    <button class="font-toggle" onclick="app.toggleFont(this.previousElementSibling.previousElementSibling.previousElementSibling, '${w.thai.replace(/'/g, '\\\'')}', '${(w.modern || w.thai).replace(/'/g, '\\\'')}')">🔄</button>
+                </div>
+            </div>
+        `).join('');
+
+        this.showSection('lesson-detail');
+    },
+
+    performSearch: function() {
+        const query = document.getElementById('search-input').value.toLowerCase().trim();
+        const resultsContainer = document.getElementById('search-results');
+        
+        if (!query) {
+            resultsContainer.innerHTML = '<p style="text-align: center; color: #666; margin-top: 20px;">Enter a search term to find vocabulary</p>';
+            return;
+        }
+
+        // Search through all lessons
+        const results = [];
+        lessonsData.forEach(lesson => {
+            lesson.words.forEach(word => {
+                if (word.thai.toLowerCase().includes(query) || 
+                    word.phonetic.toLowerCase().includes(query) || 
+                    word.english.toLowerCase().includes(query)) {
+                    results.push({
+                        ...word,
+                        lessonTitle: lesson.title,
+                        lessonId: lesson.id
+                    });
+                }
+            });
+        });
+
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<p style="text-align: center; color: #666; margin-top: 20px;">No results found for "' + query + '"</p>';
+            return;
+        }
+
+        resultsContainer.innerHTML = results.map(w => `
+            <div class="vocab-item">
+                <button class="btn btn-primary" style="padding:10px; border-radius:50%; width:40px; height:40px; justify-content:center;" onclick="tts.speak('${this.getThaiText(w)}')">🔊</button>
+                <div>
+                    <div class="thai-lg" style="font-family: '${this.getFont(w)}', sans-serif;" data-current="traditional">${this.getThaiText(w)}</div>
+                    <div class="phonetic">${w.phonetic}</div>
+                    <div style="color:#444;">${w.english}</div>
+                    <div style="font-size: 0.8rem; color: var(--primary); margin-top: 5px;">From: ${w.lessonTitle}</div>
+                    <button class="font-toggle" onclick="app.toggleFont(this.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling, '${w.thai.replace(/'/g, '\\\'')}', '${(w.modern || w.thai).replace(/'/g, '\\\'')}')">🔄</button>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    startPractice: function(mode) {
+        const container = document.getElementById('practice-container');
+        container.style.display = 'block';
+        
+        if (mode === 'flashcards') {
+            // Collect all words from all lessons
+            const allWords = [];
+            lessonsData.forEach(lesson => {
+                allWords.push(...lesson.words.map(w => ({...w, lessonTitle: lesson.title})));
+            });
+            
+            // Shuffle and take first 20
+            const practiceWords = allWords.sort(() => Math.random() - 0.5).slice(0, 20);
+            
+            container.innerHTML = `
+                <h3 style="color: var(--secondary); margin-bottom: 20px;">Mixed Flashcards Practice</h3>
+                <p style="margin-bottom: 20px; color: #666;">Practice with 20 random words from all lessons</p>
+                <button class="btn btn-success" onclick="app.launchMixedFlashcards(${JSON.stringify(practiceWords).replace(/"/g, '&quot;')})">Start Practice</button>
+            `;
+        } else if (mode === 'quiz') {
+            container.innerHTML = `
+                <h3 style="color: var(--secondary); margin-bottom: 20px;">Mixed Quiz Practice</h3>
+                <p style="margin-bottom: 20px; color: #666;">Take a quiz with words from all lessons</p>
+                <button class="btn btn-success" onclick="app.launchMixedQuiz()">Start Quiz</button>
+            `;
+        } else if (mode === 'tones') {
+            container.innerHTML = `
+                <h3 style="color: var(--secondary); margin-bottom: 20px;">Tone Practice</h3>
+                <p style="margin-bottom: 20px; color: #666;">Practice identifying Thai tones</p>
+                <p style="color: #888; font-style: italic;">Coming soon - this feature is under development</p>
+            `;
+        }
+    },
+
+    launchMixedFlashcards: function(words) {
+        // Temporarily replace flashcards deck
+        const originalDeck = flashcards.deck;
+        flashcards.deck = words;
+        flashcards.currentIndex = 0;
+        flashcards.isFlipped = false;
+        flashcards.updateCard();
+        document.getElementById('fc-modal').classList.add('active');
+        
+        // Restore original deck when modal closes
+        const closeBtn = document.querySelector('#fc-modal .close-modal');
+        const originalOnclick = closeBtn.onclick;
+        closeBtn.onclick = function() {
+            flashcards.deck = originalDeck;
+            originalOnclick();
+        };
+    },
+
+    launchMixedQuiz: function() {
+        // Collect all words and create quiz
+        const allWords = [];
+        lessonsData.forEach(lesson => {
+            allWords.push(...lesson.words);
+        });
+        
+        // Generate quiz questions
+        const pool = allWords.sort(() => 0.5 - Math.random());
+        quiz.questions = pool.slice(0, 10).map(correct => {
+            const wrongOptions = pool.filter(w => w !== correct)
+                                     .sort(() => 0.5 - Math.random())
+                                     .slice(0, 3)
+                                     .map(w => w.english);
+            const options = [...wrongOptions, correct.english].sort(() => 0.5 - Math.random());
+            return { word: correct, options: options };
+        });
+
+        quiz.score = 0;
+        quiz.renderQuiz();
+        document.getElementById('quiz-modal').classList.add('active');
+    }
+};
+
+// --- FLASHCARD LOGIC ---
+const flashcards = {
+    deck: [],
+    currentIndex: 0,
+    isFlipped: false,
+    mode: 'standard', // standard, recall, hard
+    currentWord: null,
+
+    open: function() {
+        if(!app.currentLesson) return;
+        this.deck = [...app.currentLesson.words];
+        this.currentIndex = 0;
+        this.isFlipped = false;
+        
+        // Shuffle deck
+        this.deck.sort(() => Math.random() - 0.5);
+        
+        this.updateCard();
+        document.getElementById('fc-modal').classList.add('active');
+    },
+
+    close: function() {
+        document.getElementById('fc-modal').classList.remove('active');
+    },
+
+    setMode: function(mode) {
+        this.mode = mode;
+        this.isFlipped = false;
+        document.getElementById('fc-card').classList.remove('is-flipped');
+        setTimeout(() => this.updateCard(), 200);
+    },
+
+    updateCard: function() {
+        const word = this.deck[this.currentIndex];
+        this.currentWord = word;
+        const frontMain = document.getElementById('fc-front-main');
+        const frontSub = document.getElementById('fc-front-sub');
+        const backMain = document.getElementById('fc-back-main');
+        const backSub = document.getElementById('fc-back-sub');
+        const counter = document.getElementById('fc-counter');
+
+        document.getElementById('fc-card').classList.remove('is-flipped');
+        this.isFlipped = false;
+
+        if (this.mode === 'standard') {
+            // Front: Thai + Phonetic -> Back: English
+            frontMain.textContent = app.getThaiText(word);
+            frontMain.style.fontFamily = `'${app.getFont(word)}', sans-serif`;
+            frontMain.setAttribute('data-current', 'traditional');
+            frontSub.textContent = word.phonetic;
+            backMain.textContent = word.english;
+            backSub.textContent = "";
+        } else if (this.mode === 'recall') {
+            // Front: English -> Back: Thai + Phonetic
+            frontMain.textContent = word.english;
+            frontSub.textContent = "";
+            backMain.textContent = app.getThaiText(word);
+            backMain.style.fontFamily = `'${app.getFont(word)}', sans-serif`;
+            backMain.setAttribute('data-current', 'traditional');
+            backSub.textContent = word.phonetic;
+        } else if (this.mode === 'hard') {
+            // Front: Thai Script ONLY -> Back: Phonetic + English
+            frontMain.textContent = app.getThaiText(word);
+            frontMain.style.fontFamily = `'${app.getFont(word)}', sans-serif`;
+            frontMain.setAttribute('data-current', 'traditional');
+            frontSub.textContent = "???"; // Hide phonetic
+            backMain.textContent = word.phonetic;
+            backSub.textContent = word.english;
+        }
+
+        counter.textContent = `${this.currentIndex + 1} / ${this.deck.length}`;
+    },
+
+    flip: function() {
+        this.isFlipped = !this.isFlipped;
+        document.getElementById('fc-card').classList.toggle('is-flipped');
+        
+        // Auto-play audio on flip if showing Thai side (Recall mode)
+        if(this.isFlipped && this.mode === 'recall') {
+            setTimeout(() => tts.speak(app.getThaiText(this.currentWord)), 300);
+        }
+    },
+
+    next: function() {
+        if(this.currentIndex < this.deck.length - 1) {
+            this.currentIndex++;
+            this.updateCard();
+        }
+    },
+
+    prev: function() {
+        if(this.currentIndex > 0) {
+            this.currentIndex--;
+            this.updateCard();
+        }
+    },
+
+    refresh: function() {
+        if (this.currentWord) {
+            this.updateCard();
+        }
+    },
+
+    toggleCardFont: function() {
+        const frontMain = document.getElementById('fc-front-main');
+        const backMain = document.getElementById('fc-back-main');
+        const word = this.currentWord;
+        if (frontMain.textContent && /[\u0E00-\u0E7F]/.test(frontMain.textContent)) {
+            app.toggleFont(frontMain, word.thai, word.modern || word.thai);
+        }
+        if (backMain.textContent && /[\u0E00-\u0E7F]/.test(backMain.textContent)) {
+            app.toggleFont(backMain, word.thai, word.modern || word.thai);
+        }
+    }
+};
+
+// --- QUIZ LOGIC ---
+const quiz = {
+    questions: [],
+    score: 0,
+    
+    start: function() {
+        if(!app.currentLesson) return;
+        
+        // Generate 5 random questions
+        const pool = [...app.currentLesson.words].sort(() => 0.5 - Math.random());
+        this.questions = pool.slice(0, 5).map(correct => {
+            const wrongOptions = pool.filter(w => w !== correct)
+                                     .sort(() => 0.5 - Math.random())
+                                     .slice(0, 3)
+                                     .map(w => w.english);
+            const options = [...wrongOptions, correct.english].sort(() => 0.5 - Math.random());
+            return { word: correct, options: options };
+        });
+
+        this.score = 0;
+        this.renderQuiz();
+        document.getElementById('quiz-modal').classList.add('active');
+    },
+
+    renderQuiz: function() {
+        const container = document.getElementById('quiz-body');
+        container.innerHTML = `
+            <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">Quiz: ${app.currentLesson.title}</h2>
+            <div id="quiz-questions">
+                ${this.questions.map((q, idx) => `
+                    <div class="q-block" style="margin-bottom:30px; border-bottom:1px solid #eee; padding-bottom:20px;">
+                        <p style="font-weight:bold; margin-bottom:10px;">${idx+1}. What is "<span style="font-family: '${app.getFont(q.word)}', sans-serif;" data-current="traditional">${app.getThaiText(q.word)}</span>" (${q.word.phonetic})?</p>
+                        <button class="font-toggle" onclick="app.toggleFont(this.previousElementSibling.querySelector('span'), '${q.word.thai.replace(/'/g, '\\\'')}', '${(q.word.modern || q.word.thai).replace(/'/g, '\\\'')}')">🔄</button>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                            ${q.options.map(opt => `
+                                <button class="btn btn-secondary q-opt" onclick="quiz.check(this, '${opt.replace(/'/g, "\\'")}', '${q.word.english.replace(/'/g, "\\'")}')">${opt}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            <div id="quiz-results" style="text-align:center; font-weight:bold; font-size:1.2rem; margin-top:20px;"></div>
+        `;
+    },
+
+    check: function(btn, selected, correct) {
+        // Disable buttons in this group
+        const parent = btn.parentElement;
+        const buttons = parent.getElementsByClassName('q-opt');
+        Array.from(buttons).forEach(b => b.disabled = true);
+
+        if(selected === correct) {
+            btn.style.background = 'var(--success)';
+            btn.innerText += " ✅";
+            this.score++;
+        } else {
+            btn.style.background = 'var(--accent)';
+            btn.innerText += " ❌";
+            // Highlight correct one
+            Array.from(buttons).forEach(b => {
+                if(b.innerText === correct) b.style.background = 'var(--success)';
+            });
+        }
+        
+        // Check if done (simple check: count disabled buttons groups)
+        const allAnswered = document.querySelectorAll('.q-opt:disabled').length === this.questions.length * 4;
+        if(allAnswered || document.querySelectorAll('.q-opt:disabled').length >= this.questions.length) { // Simplified logic
+             document.getElementById('quiz-results').innerText = `You scored ${this.score} / ${this.questions.length}!`;
+        }
+    }
+};
+
+// --- TTS SYSTEM ---
+const tts = {
+    voices: [],
+    selectedVoice: null,
+
+    loadVoices: function() {
+        const populate = () => {
+            this.voices = speechSynthesis.getVoices().filter(v => v.lang.includes('th'));
+            const select = document.getElementById('voice-select');
+            select.innerHTML = '';
+            
+            if(this.voices.length === 0) {
+                const opt = document.createElement('option');
+                opt.text = "No Thai voices found (Using default)";
+                select.add(opt);
+                return;
+            }
+
+            this.voices.forEach((v, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.text = `${v.name} (${v.lang})`;
+                select.add(opt);
+            });
+            this.selectedVoice = this.voices[0];
+            
+            select.onchange = (e) => {
+                this.selectedVoice = this.voices[e.target.value];
+            };
+        };
+
+        populate();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = populate;
+        }
+    },
+
+    speak: function(text) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'th-TH';
+        if(this.selectedVoice) utterance.voice = this.selectedVoice;
+        window.speechSynthesis.speak(utterance);
+    }
+};
+
+// Start
+document.addEventListener('DOMContentLoaded', () => app.init());
+
+</script>
+</body>
+</html>
