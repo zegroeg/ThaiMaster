@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Thai Ultimate 2025</title>
+    <title>Thai Master - Learn Thai Language</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -92,6 +92,138 @@
         }
 
         .font-toggle:hover { background: #f0f0f0; }
+
+        .grammar-example {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .grammar-example p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .tone-mark {
+            font-size: 3rem;
+            display: inline-block;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .tone-mid { animation-name: mid-tone; }
+        .tone-low { animation-name: low-tone; }
+        .tone-falling { animation-name: falling-tone; }
+        .tone-high { animation-name: high-tone; }
+        .tone-rising { animation-name: rising-tone; }
+
+        @keyframes mid-tone {
+            0%, 100% { transform: translateY(0); }
+        }
+
+        @keyframes low-tone {
+            0%, 100% { transform: translateY(20px); }
+        }
+
+        @keyframes falling-tone {
+            0% { transform: translateY(-20px); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(20px); }
+        }
+
+        @keyframes high-tone {
+            0%, 100% { transform: translateY(-20px); }
+        }
+
+        @keyframes rising-tone {
+            0% { transform: translateY(20px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        .tone-visualizer {
+            width: 80px; height: 40px; 
+            background: linear-gradient(to top, #6EE7B7, #D1FAE5);
+            border-radius: 0.25rem; border: 1px solid #A7F3D0;
+        }
+        .tone-dot.animate { animation: move-dot 1.5s ease-in-out; }
+        @keyframes move-dot {
+            0% { offset-distance: 0%; }
+            100% { offset-distance: 100%; }
+        }
+        .practice-option.correct { 
+            border-color: #10B981 !important; 
+            background-color: #D1FAE5 !important;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important; 
+        }
+        .practice-option.incorrect { 
+            border-color: #EF4444 !important; 
+            background-color: #FEE2E2 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important; 
+        }
+        .tone-option.correct {
+            border-color: #10B981 !important; 
+            background-color: #D1FAE5 !important;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3) !important; 
+        }
+        .tone-option.incorrect {
+            border-color: #EF4444 !important; 
+            background-color: #FEE2E2 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3) !important; 
+        }
+
+        /* Utility classes for tone lesson */
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-gray-200 { background-color: #e5e7eb; }
+        .bg-blue-500 { background: #3b82f6; }
+        .bg-blue-100 { background-color: #dbeafe; }
+        .bg-teal-600 { background-color: #0d9488; }
+        .bg-teal-700 { background-color: #0f766e; }
+        .bg-teal-200 { background-color: #a7f3d0; }
+        .bg-gray-600 { background-color: #4b5563; }
+        .text-white { color: white; }
+        .text-green-600 { color: #16a34a; }
+        .text-red-600 { color: #dc2626; }
+        .text-gray-600 { color: #4b5563; }
+        .text-teal-600 { color: #0d9488; }
+        .text-xl { font-size: 1.25rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .p-3 { padding: 0.75rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .rounded { border-radius: 0.25rem; }
+        .rounded-full { border-radius: 9999px; }
+        .border-2 { border-width: 2px; }
+        .border-gray-300 { border-color: #d1d5db; }
+        .border-t { border-top-width: 1px; }
+        .pt-4 { padding-top: 1rem; }
+        .flex { display: flex; }
+        .flex-grow { flex-grow: 1; }
+        .items-center { align-items: center; }
+        .gap-4 { gap: 1rem; }
+        .gap-2 { gap: 0.5rem; }
+        .grid { display: grid; }
+        .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        .hover\:bg-teal-200:hover { background-color: #a7f3d0; }
+        .hover\:bg-teal-700:hover { background-color: #0f766e; }
+        .transition { transition: all 0.15s ease-in-out; }
+        .hidden { display: none; }
+        .thai-script { font-family: 'Noto Sans Thai', sans-serif; font-size: 1.375rem; }
 
         main { padding: 2rem; flex: 1; }
         
@@ -286,29 +418,29 @@
 
 <div class="container">
     <header>
-        <h1>🇹🇭 Learn Thai Ultimate</h1>
+        <h1>Thai Master</h1>
         <p>Expanded Vocabulary 2025</p>
     </header>
 
     <nav>
         <button class="btn btn-primary" onclick="app.showSection('home')">🏠 Home</button>
-        <button class="btn btn-primary" onclick="app.showSection('lessons')">📚 Topics</button>
-        <button class="btn btn-primary" onclick="app.showSection('search')">🔍 Search</button>
         <button class="btn btn-primary" onclick="app.showSection('practice')">🎯 Practice</button>
+        <button class="btn btn-primary" onclick="app.showSection('lessons')">📚 Topics</button>
+        <button class="btn btn-primary" onclick="app.showSection('phonetics')">🔤 Phonetics</button>
+        <button class="btn btn-primary" onclick="app.showSection('tones')">🎵 Tones</button>
+        <button class="btn btn-primary" onclick="app.showSection('search')">🔍 Search</button>
         <button class="btn btn-primary" onclick="app.showSection('settings')">⚙️ Settings</button>
     </nav>
 
     <main>
         <section id="home" class="section active">
             <div style="text-align: center; padding: 2rem;">
-                <h2 style="color: var(--secondary); margin-bottom: 1rem;">sa-wat-dii Krub/Ka! 🙏</h2>
+                <h2 style="color: var(--secondary); margin-bottom: 1rem;">Welcome to Thai Master</h2>
                 <p style="font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
-                    Welcome to the updated Thai learning platform. This version includes extended vocabulary from the 2025 curriculum, 
-                    covering <strong>Classifiers</strong>, <strong>Cooking terms</strong>, <strong>Complex numbers</strong>, and more.
-                    Use the <strong>Search</strong> feature to find specific words, or try the <strong>Practice</strong> modes for mixed flashcards and quizzes.
+                    Master Thai with our comprehensive learning app featuring accurate TLRS phonetics, interactive lessons, flashcards, and quizzes. Switch between traditional and modern fonts to enhance your reading skills.
                 </p>
                 <br>
-                <button class="btn btn-success" style="font-size: 1.2rem; padding: 15px 40px;" onclick="app.showSection('lessons')">
+                <button class="btn btn-success" style="font-size: 1.2rem; padding: 15px 40px;" onclick="app.showSection('practice')">
                     Start Learning
                 </button>
             </div>
@@ -317,6 +449,138 @@
         <section id="lessons" class="section">
             <h2 style="margin-bottom: 20px; color: var(--secondary);">Choose a Topic</h2>
             <div id="lesson-grid" class="lesson-grid"></div>
+        </section>
+
+        <section id="phonetics" class="section">
+            <h2 style="color: var(--secondary); margin-bottom: 20px;">TLRS Phonetics Guide</h2>
+            <div style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                <p>The Thai Learner's Romanization System (TLRS)</p>
+                <h3>Introduction to the Thai Learner's Romanization System (TLRS)</h3>
+                <p>The Thai Learner's Romanization System (TLRS) is a comprehensive, phonemic transcription method designed to provide a highly accurate and unambiguous representation of spoken Thai using the Roman alphabet. It is structured to explicitly capture the three main phonetic components that challenge non-native speakers: consonant aspiration, vowel length, and lexical tone.</p>
+                <p>The primary function of TLRS is to simplify pronunciation by consistently using specific Roman letters and marks:</p>
+                <ul>
+                    <li>Consonants: TLRS uses unique letter combinations (e.g., dt and kh) to clearly distinguish between unaspirated (hard, tense) and aspirated (breathy) initial sounds, which Thai native script groups together.</li>
+                    <li>Vowels: Vowel length is explicitly marked, using a single letter for short vowels (a) and a double letter for long vowels (aa).</li>
+                    <li>Tones: Tones are unambiguously indicated using standard diacritical marks (Grave `, Circumflex ˆ, Acute ˊ and Caron ˇ) placed over the vowel, offering an unambiguous system for learners.</li>
+                </ul>
+                <h3>🎯 Benefits for Beginner Learners</h3>
+                <p>For those just starting their Thai language journey, TLRS provides immediate and critical benefits:</p>
+                <ol>
+                    <li>Guaranteed Pronunciation Accuracy: Beginners can bypass the complexity of the Thai script's class rules (High, Mid, Low Consonants) by relying on the TLRS's explicit markings for tone and aspiration. This allows them to focus solely on imitating native sounds without needing to memorize phonetic derivation rules.</li>
+                    <li>Unambiguous Vowel Length: Distinguishing between short and long vowels (e.g., i vs. ii) is vital for meaning in Thai. TLRS's consistent use of single vs. double letters eliminates guesswork.</li>
+                    <li>Faster Communication: By offering a simple, predictable system for transcribing any Thai word, beginners can begin speaking and using vocabulary immediately, building confidence before tackling the intricate reading and writing system.</li>
+                </ol>
+                <h3>🎓 Benefits for Proficient Learners</h3>
+                <p>For those who are already familiar with the Thai script and have reached a conversational or intermediate level, TLRS serves as an invaluable reference tool:</p>
+                <ol>
+                    <li>Pronunciation Check: Because the Thai alphabet itself is not a pure phonetic guide (e.g., it uses the same final consonant letter for several different final sounds), TLRS acts as a precise phonetic reference. It ensures that the learner's pronunciation, especially of challenging final consonants and tense initial sounds, remains accurate and standardized.</li>
+                    <li>Reinforcement of Reading Skills: By clearly marking the phonetic outcomes of different consonant/vowel combinations, TLRS reinforces the phonetic rules embedded in the Thai script, helping the proficient learner fully understand why a particular syllable is pronounced with a certain tone or vowel length.</li>
+                    <li>Systematic Comparison: TLRS provides a fixed point of comparison, allowing learners to systematically compare their spoken output against a standardized system, which is crucial for mastering the language's subtle phonetic nuances.</li>
+                </ol>
+                <h3>Consonants (Phayancha-ná)</h3>
+                <p>The TLRS uses specific letters to distinguish between the three crucial phonetic features of Thai: unaspirated (k, t, p, j, dt, bp), aspirated (kh, th, ph, ch), and the two separate final consonant outcomes (Stop: p, t, k; Nasal: m, n, ng, w, y).</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><th>Thai Alphabet (รูปอักษร)</th><th>Initial Consonant (TLRS Symbol)</th><th>Final Consonant (TLRS Final)</th><th>American-English Equivalent</th></tr>
+                    <tr><td>ก</td><td>k</td><td>k</td><td>As in skate (Unaspirated)</td></tr>
+                    <tr><td>ข ฃ ค ฅ ฆ</td><td>kh</td><td>k</td><td>As in cat (Aspirated)</td></tr>
+                    <tr><td>ด ฎ</td><td>d</td><td>t</td><td>Dam, do (Unaspirated)</td></tr>
+                    <tr><td>ต ฏ</td><td>dt</td><td>t</td><td>Tensed t (Similar to dt sound)</td></tr>
+                    <tr><td>ท ฑ ฒ ธ ถ ฐ</td><td>th</td><td>t</td><td>Tote, tame (Aspirated)</td></tr>
+                    <tr><td>บ</td><td>b</td><td>p</td><td>Boat, bank (Unaspirated)</td></tr>
+                    <tr><td>ป</td><td>bp</td><td>p</td><td>Tensed p (Similar to bp sound)</td></tr>
+                    <tr><td>พ ภ ผ</td><td>ph</td><td>p</td><td>Pan, pie (Aspirated)</td></tr>
+                    <tr><td>จ</td><td>j</td><td>t</td><td>Jam, jet (Unaspirated affricate)</td></tr>
+                    <tr><td>ฉ ช ฌ</td><td>ch</td><td>t</td><td>Cheap, chart (Aspirated affricate)</td></tr>
+                    <tr><td>ฟ ฝ</td><td>f</td><td>p</td><td>Find, foe</td></tr>
+                    <tr><td>ซ ศ ษ ส</td><td>s</td><td>t</td><td>Son, sand</td></tr>
+                    <tr><td>ย ญ</td><td>y</td><td>n</td><td>Yet, yam (Final ญ sounds as n)</td></tr>
+                    <tr><td>ว</td><td>w</td><td>w</td><td>Wane, wine</td></tr>
+                    <tr><td>ห ฮ</td><td>h</td><td>-</td><td>Hip, head</td></tr>
+                    <tr><td>ร</td><td>r</td><td>n</td><td>Rat, road (Final ร sounds as n)</td></tr>
+                    <tr><td>ล ฬ</td><td>l</td><td>n</td><td>Lad, loud (Final ล ฬ sounds as n)</td></tr>
+                    <tr><td>ม</td><td>m</td><td>m</td><td>Man, make</td></tr>
+                    <tr><td>น ณ</td><td>n</td><td>n</td><td>Nine, not</td></tr>
+                    <tr><td>ง</td><td>ng</td><td>ng</td><td>singing, bringing</td></tr>
+                    <tr><td>อ</td><td>o</td><td>-</td><td>Only, out (Syllable carrier)</td></tr>
+                </table>
+                <p>Note on TLRS Consonants: The Thai consonants ฃ, ฅ, ผ, ฉ, ฝ, ห, อ, and ฮ cannot be used as final consonants.</p>
+                <h3>B. Clusters (Phayancha-ná Khûap Klam)</h3>
+                <p>The TLRS maintains consistency by using h to denote aspiration in a cluster and separating the two consonant symbols.</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><th>Thai Script (Initial Cluster)</th><th>TLRS Phonetics</th><th>English Sound Approximation</th></tr>
+                    <tr><td>กว</td><td>gw</td><td>gwen, strand, straw</td></tr>
+                    <tr><td>ตร</td><td>dtr</td><td>d-trill (Similar to d followed by r)</td></tr>
+                    <tr><td>ปร</td><td>bpr</td><td>(Sound has no common English equivalent)</td></tr>
+                    <tr><td>ปล</td><td>bpl</td><td>splat, split</td></tr>
+                    <tr><td>คร, ขร</td><td>khr</td><td>clone, crash</td></tr>
+                    <tr><td>คล, ขล</td><td>khl</td><td>clone, clash</td></tr>
+                    <tr><td>คว, ขว</td><td>khw</td><td>quit, quack</td></tr>
+                    <tr><td>พร</td><td>phr</td><td>(Sound has no common English equivalent)</td></tr>
+                    <tr><td>พล, ผล</td><td>phl</td><td>plank, pliers</td></tr>
+                </table>
+                <h3>Vowels and Tone Markers (Sà-rà wáan-ná-yúk)</h3>
+                <p>The TLRS uses double letters for long vowels and diacritics for tones, offering an unambiguous system for learners.</p>
+                <h4>I. Vowel System (TLRS)</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><th>Thai Vowel Forms (รูปสระ)</th><th>TLRS Phonetic Symbols</th><th>American-English Equivalent</th><th>TLRS Vowel Length</th></tr>
+                    <tr><td>-ะ, -ั, รร (with final consonant)</td><td>a</td><td>but, cut</td><td>Short</td></tr>
+                    <tr><td>-า</td><td>aa</td><td>baht, cart</td><td>Long</td></tr>
+                    <tr><td>-ิ</td><td>i</td><td>did, bit</td><td>Short</td></tr>
+                    <tr><td>-ี</td><td>ii</td><td>beat, deed</td><td>Long</td></tr>
+                    <tr><td>-ึ</td><td>er</td><td>in 'third' (without 'r' sound)</td><td>Short</td></tr>
+                    <tr><td>-ือ</td><td>err</td><td>Same sound, elongated</td><td>Long</td></tr>
+                    <tr><td>-ุ</td><td>u</td><td>foot, book</td><td>Short</td></tr>
+                    <tr><td>-ู</td><td>uu</td><td>blue, too</td><td>Long</td></tr>
+                    <tr><td>เ-ะ / เ-</td><td>e / ee</td><td>yet, bet / fate, taste</td><td>Short / Long</td></tr>
+                    <tr><td>แ-ะ / แ-</td><td>ae / aae</td><td>fat, black / can, fan</td><td>Short / Long</td></tr>
+                    <tr><td>โะ / โ-</td><td>o / oo</td><td>only, Toyota / tone, doe</td><td>Short / Long</td></tr>
+                    <tr><td>เ-าะ / -อ</td><td>oe / ooe</td><td>cot, watch (approx.) / bought, cause (approx.)</td><td>Short / Long</td></tr>
+                    <tr><td>เ-อะ / เ-อ</td><td>ea / eea</td><td>(Similar to 'a' in 'about')</td><td>Short / Long</td></tr>
+                    <tr><td>เ-ียะ / เ-ีย</td><td>ia / iia</td><td>fiesta, idea</td><td>Short / Long</td></tr>
+                    <tr><td>เ-ือะ / เ-ือ</td><td>uea / uuea</td><td>(Similar to 'tour' or 'cure')</td><td>Short / Long</td></tr>
+                    <tr><td>-ัวะ / -ัว</td><td>ua / uua</td><td>dual, ruin</td><td>Short / Long</td></tr>
+                    <tr><td>-ำ, ใ-, ไ-, เ-า (Diphthongs)</td><td>am, ai, ai, ao</td><td>album, high, buy, cow</td><td>(Special)</td></tr>
+                </table>
+                <h4>TLRS Tone Markers</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><th>Thai Tone</th><th>TLRS Mark</th><th>Description</th><th>Example TLRS Spelling</th></tr>
+                    <tr><td>Mid Tone</td><td>No Mark</td><td>Even, level pitch</td><td>maa (มา - 'come')</td></tr>
+                    <tr><td>Low Tone</td><td>Grave Accent `</td><td>Starts low, stays low</td><td>ma`a (หมา - 'dog')</td></tr>
+                    <tr><td>Falling Tone</td><td>Circumflex ˆ</td><td>Starts high, dips, then falls low</td><td>maˆa (ม้า - 'horse')</td></tr>
+                    <tr><td>High Tone</td><td>Acute Accent ˊ</td><td>Starts high, rises slightly higher</td><td>maˊa (มะ - 'mother')</td></tr>
+                    <tr><td>Rising Tone</td><td>Caron ˇ</td><td>Starts low, rises to a high pitch</td><td>maˇa (หมา - 'new/silk')</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="tones" class="section">
+            <h2 style="color: var(--secondary); margin-bottom: 20px;">Thai Tone System - Mastering the 5 Tones</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p style="margin-bottom: 20px;">Thai has 5 tones that completely change word meanings. Master these first!</p>
+                <div id="lesson1-vocab" class="grid gap-4"></div>
+                
+                <div class="quiz-section border-t pt-4" data-quiz="tone">
+                    <div class="quiz-start">
+                        <h4 class="font-semibold mb-2">Practice: Tone Recognition</h4>
+                        <button class="start-quiz bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Start Quiz</button>
+                    </div>
+                    <div class="quiz-active hidden">
+                        <div class="quiz-progress mb-4"></div>
+                        <div class="text-center mb-4">
+                            <p>Listen and select the correct tone:</p>
+                            <button class="play-quiz-audio bg-blue-100 p-3 rounded-full mt-2">🔊</button>
+                        </div>
+                        <div class="quiz-options grid grid-cols-5 gap-2"></div>
+                        <div class="quiz-feedback mt-4 text-center font-bold"></div>
+                        <button class="quiz-next hidden bg-gray-600 text-white px-4 py-2 rounded mt-4">Next</button>
+                    </div>
+                    <div class="quiz-complete hidden text-center">
+                        <h4 class="font-semibold mb-2">Quiz Complete!</h4>
+                        <div class="quiz-score text-xl mb-4"></div>
+                        <button class="retry-quiz bg-teal-600 text-white px-4 py-2 rounded">Try Again</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="search" class="section">
@@ -344,12 +608,6 @@
                     <h3 style="color: var(--secondary);">📝 Mixed Quiz</h3>
                     <p style="color: #666;">Take a quiz with words from all lessons</p>
                     <div style="font-size: 0.85rem; color: #888;">Multiple choice questions</div>
-                </div>
-                
-                <div class="lesson-card" onclick="app.startPractice('tones')" style="cursor: pointer;">
-                    <h3 style="color: var(--secondary);">🎵 Tone Practice</h3>
-                    <p style="color: #666;">Practice Thai tones with audio</p>
-                    <div style="font-size: 0.85rem; color: #888;">Listen and identify tones</div>
                 </div>
             </div>
             
@@ -1606,6 +1864,41 @@ const lessonsData = [
                 phonetic: "thít-dtà-wan-dtòk",
                 english: "West",
                 modern: "ทิศตะวันตก",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เลี้ยว",
+                phonetic: "líao",
+                english: "turn",
+                modern: "เลี้ยว",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ซ้าย",
+                phonetic: "sáai",
+                english: "left",
+                modern: "ซ้าย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ขวา",
+                phonetic: "khwâa",
+                english: "right",
+                modern: "ขวา",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เลี้ยวซ้าย",
+                phonetic: "líao-sáai",
+                english: "turn left",
+                modern: "เลี้ยวซ้าย",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เลี้ยวขวา",
+                phonetic: "líao-khwâa",
+                english: "turn right",
+                modern: "เลี้ยวขวา",
                 font: "Sukhumvit Set"
             }
         ],
@@ -2939,6 +3232,98 @@ const lessonsData = [
     },
     {
         id: 18,
+        title: "Months of the Year",
+        desc: "Vocabulary related to months",
+        words: [
+            {
+                thai: "มกราคม",
+                phonetic: "mók-kà-raa-khom",
+                english: "January",
+                modern: "มกราคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กุมภาพันธ์",
+                phonetic: "gum-pháa-phan",
+                english: "February",
+                modern: "กุมภาพันธ์",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มีนาคม",
+                phonetic: "mii-naa-khom",
+                english: "March",
+                modern: "มีนาคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "เมษายน",
+                phonetic: "mee-sǎa-yon",
+                english: "April",
+                modern: "เมษายน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พฤษภาคม",
+                phonetic: "phrút-sà-phaa-khom",
+                english: "May",
+                modern: "พฤษภาคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "มิถุนายน",
+                phonetic: "mí-thù-naa-yon",
+                english: "June",
+                modern: "มิถุนายน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กรกฎาคม",
+                phonetic: "kà-rák-kà-daa-khom",
+                english: "July",
+                modern: "กรกฎาคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "สิงหาคม",
+                phonetic: "sǐng-hǎa-khom",
+                english: "August",
+                modern: "สิงหาคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "กันยายน",
+                phonetic: "gàn-yaa-yon",
+                english: "September",
+                modern: "กันยายน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ตุลาคม",
+                phonetic: "dtù-laa-khom",
+                english: "October",
+                modern: "ตุลาคม",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "พฤศจิกายน",
+                phonetic: "phrút-sà-jìk-khaa-yon",
+                english: "November",
+                modern: "พฤศจิกายน",
+                font: "Sukhumvit Set"
+            },
+            {
+                thai: "ธันวาคม",
+                phonetic: "thàn-waa-khom",
+                english: "December",
+                modern: "ธันวาคม",
+                font: "Sukhumvit Set"
+            }
+        ],
+        patterns: []
+    },
+    {
+        id: 19,
         title: "Frequency",
         desc: "Vocabulary related to frequency",
         words: [
@@ -3030,7 +3415,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 19,
+        id: 20,
         title: "Past",
         desc: "Vocabulary related to past",
         words: [
@@ -3164,7 +3549,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 20,
+        id: 21,
         title: "Future",
         desc: "Vocabulary related to future",
         words: [
@@ -3312,7 +3697,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 21,
+        id: 22,
         title: "Comparison",
         desc: "Vocabulary related to comparison",
         words: [
@@ -3446,7 +3831,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 22,
+        id: 23,
         title: "Superlative",
         desc: "Vocabulary related to superlative",
         words: [
@@ -3559,7 +3944,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 23,
+        id: 24,
         title: "Invitation",
         desc: "Vocabulary related to invitation",
         words: [
@@ -3644,7 +4029,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 24,
+        id: 25,
         title: "Suggestion",
         desc: "Vocabulary related to suggestion",
         words: [
@@ -3729,7 +4114,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 25,
+        id: 26,
         title: "Opinion",
         desc: "Vocabulary related to opinion",
         words: [
@@ -3793,7 +4178,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 26,
+        id: 27,
         title: "Emotion",
         desc: "Vocabulary related to emotion",
         words: [
@@ -3885,7 +4270,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 27,
+        id: 28,
         title: "Linking",
         desc: "Vocabulary related to linking",
         words: [
@@ -3928,7 +4313,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 28,
+        id: 29,
         title: "Body",
         desc: "Vocabulary related to body",
         words: [
@@ -4055,7 +4440,7 @@ const lessonsData = [
         patterns: []
     },
     {
-        id: 29,
+        id: 30,
         title: "Fauna",
         desc: "Vocabulary related to fauna",
         words: [
@@ -4254,6 +4639,9 @@ const app = {
             fontSelect.value = this.fontMode;
         }
         
+        // Initialize tone lesson
+        renderLesson1();
+        
         // Setup simple navigation
         window.onclick = function(event) {
             const mod1 = document.getElementById('quiz-modal');
@@ -4317,6 +4705,94 @@ const app = {
         }
     },
 
+    getGrammarExamples: function(lesson) {
+        const examples = {
+            'Greetings': `
+                <h3>Grammar Examples: Greetings</h3>
+                <div class="grammar-example">
+                    <p><strong>Hello:</strong> สวัสดีครับ (sa-wat-dii khrap) - Use ครับ for males, ค่ะ for females</p>
+                    <p><strong>Thank you:</strong> ขอบคุณครับ (khop khun khrap)</p>
+                    <p><strong>How are you?:</strong> สบายดีไหมครับ (sa-bai dii mai khrap)</p>
+                </div>
+            `,
+            'Numbers': `
+                <h3>Grammar Examples: Numbers</h3>
+                <div class="grammar-example">
+                    <p><strong>One:</strong> หนึ่ง (nung)</p>
+                    <p><strong>Ten:</strong> สิบ (sip)</p>
+                    <p><strong>Twenty:</strong> ยี่สิบ (yee sip)</p>
+                    <p><strong>Classifiers:</strong> Use นาฬิกา (naa-li-gaa) for watches: นาฬิกา หนึ่ง (naa-li-gaa nung)</p>
+                </div>
+            `,
+            'Family & Relationships': `
+                <h3>Grammar Examples: Family</h3>
+                <div class="grammar-example">
+                    <p><strong>My father:</strong> พ่อของผม (phaw khong phom)</p>
+                    <p><strong>His mother:</strong> แม่ของเขา (mae khong khaw)</p>
+                    <p><strong>Possession:</strong> Use ของ (khong) for possession</p>
+                </div>
+            `,
+            'Food & Ingredients': `
+                <h3>Grammar Examples: Food</h3>
+                <div class="grammar-example">
+                    <p><strong>I want rice:</strong> ผมต้องการข้าว (phom dtong gaan khao)</p>
+                    <p><strong>Delicious:</strong> อร่อย (a-roi)</p>
+                    <p><strong>Spicy:</strong> เผ็ด (phet)</p>
+                </div>
+            `,
+            'Time': `
+                <h3>Grammar Examples: Time</h3>
+                <div class="grammar-example">
+                    <p><strong>What time?:</strong> กี่โมง (gee mong)</p>
+                    <p><strong>It's 3 o'clock:</strong> สามโมง (saam mong)</p>
+                    <p><strong>Half past:</strong> ครึ่ง (khrueng)</p>
+                </div>
+            `,
+            'Colors': `
+                <h3>Grammar Examples: Colors</h3>
+                <div class="grammar-example">
+                    <p><strong>Red car:</strong> รถสีแดง (rot see daeng)</p>
+                    <p><strong>Blue sky:</strong> ท้องฟ้าสีน้ำเงิน (thong faa see nam nguern)</p>
+                    <p><strong>Adjectives:</strong> Colors come after สี (see)</p>
+                </div>
+            `,
+            'Fauna': `
+                <h3>Grammar Examples: Animals</h3>
+                <div class="grammar-example">
+                    <p><strong>The dog:</strong> สุนัข (su-nan)</p>
+                    <p><strong>Big elephant:</strong> ช้างใหญ่ (chang yai)</p>
+                    <p><strong>Adjectives:</strong> Adjectives follow nouns</p>
+                </div>
+            `,
+            'Body': `
+                <h3>Grammar Examples: Body</h3>
+                <div class="grammar-example">
+                    <p><strong>My head hurts:</strong> ผมปวดหัว (phom puat hua)</p>
+                    <p><strong>Hand:</strong> มือ (mue)</p>
+                    <p><strong>Pain:</strong> ปวด (puat)</p>
+                </div>
+            `,
+            'Emotion': `
+                <h3>Grammar Examples: Emotions</h3>
+                <div class="grammar-example">
+                    <p><strong>I'm happy:</strong> ผมมีความสุข (phom mii khwaam suk)</p>
+                    <p><strong>Sad:</strong> เศร้า (sao)</p>
+                    <p><strong>Very:</strong> มาก (maak)</p>
+                </div>
+            `,
+            'Weather': `
+                <h3>Grammar Examples: Weather</h3>
+                <div class="grammar-example">
+                    <p><strong>It's hot:</strong> ร้อน (ron)</p>
+                    <p><strong>Raining:</strong> ฝนตก (fon tok)</p>
+                    <p><strong>Today:</strong> วันนี้ (wan nee)</p>
+                </div>
+            `
+        };
+        // FIXED: Removed the () that was trying to run strings as functions
+        return examples[lesson.title] ? examples[lesson.title] : lesson.desc;
+    },
+
     toggleFont: function(thaiDiv, tradText, modText) {
         const current = thaiDiv.getAttribute('data-current') || 'traditional';
         if (current === 'traditional') {
@@ -4333,12 +4809,181 @@ const app = {
     renderLessonGrid: function() {
         const grid = document.getElementById('lesson-grid');
         grid.innerHTML = lessonsData.map(l => `
-            <div class="lesson-card" onclick="app.loadLesson(${l.id})">
+            <div class="lesson-card" data-lesson-id="${l.id}">
                 <h3 style="color:var(--secondary);">${l.title}</h3>
-                <p style="color:#666; margin: 10px 0;">${l.desc}</p>
+                <p style="color:#666; margin: 10px 0;">${this.getTopicExample(l)}</p>
                 <div style="font-size:0.85rem; color:#888;">${l.words.length} words</div>
             </div>
         `).join('');
+        
+        // Add event listeners programmatically
+        document.querySelectorAll('.lesson-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const lessonId = parseInt(card.dataset.lessonId);
+                this.loadLesson(lessonId);
+            });
+        });
+    },
+
+    getTopicExample: function(lesson) {
+        try {
+            const examples = {
+                "Greetings": () => {
+                    const greeting = lesson.words.find(w => w.thai === "สวัสดี");
+                    return greeting ? `Say "${greeting.thai}" (${greeting.phonetic}) to greet someone` : lesson.desc;
+                },
+                "Pronouns": () => {
+                    const male = lesson.words.find(w => w.thai === "ผม");
+                    const female = lesson.words.find(w => w.thai === "ฉัน");
+                    return (male && female) ? `"${male.thai}" (${male.phonetic}) for men, "${female.thai}" (${female.phonetic}) for women` : lesson.desc;
+                },
+            "Family & Relationships": () => {
+                const mother = lesson.words.find(w => w.english === "Mother");
+                const father = lesson.words.find(w => w.english === "Father");
+                return (mother && father) ? `Meet my ${mother.thai} (${mother.phonetic}) and ${father.thai} (${father.phonetic})` : lesson.desc;
+            },
+            "Verbs": () => {
+                const eat = lesson.words.find(w => w.thai === "กิน");
+                const go = lesson.words.find(w => w.thai === "ไป");
+                return (eat && go) ? `"${eat.thai}" (${eat.phonetic}) means to eat, "${go.thai}" (${go.phonetic}) means to go` : lesson.desc;
+            },
+            "Numbers": () => {
+                const five = lesson.words.find(w => w.english === "5");
+                const ten = lesson.words.find(w => w.english === "10");
+                return (five && ten) ? `Count to 10: ... ${five.thai} (${five.phonetic}), ${ten.thai} (${ten.phonetic})` : lesson.desc;
+            },
+            "Places": () => {
+                const restaurant = lesson.words.find(w => w.english === "Restaurant");
+                const hotel = lesson.words.find(w => w.english === "Hotel");
+                return (restaurant && hotel) ? `Find a ${restaurant.thai} (${restaurant.phonetic}) or stay at a ${hotel.thai} (${hotel.phonetic})` : lesson.desc;
+            },
+            "Directions": () => {
+                const turn = lesson.words.find(w => w.thai === "เลี้ยว");
+                const left = lesson.words.find(w => w.thai === "ซ้าย");
+                const right = lesson.words.find(w => w.thai === "ขวา");
+                return (turn && left && right) ? `${turn.thai} (${turn.phonetic}) ${left.thai} (${left.phonetic}) or ${turn.thai} ${right.thai} at the corner` : lesson.desc;
+            },
+            "Food & Ingredients": () => {
+                const rice = lesson.words.find(w => w.thai === "ข้าว");
+                const chicken = lesson.words.find(w => w.thai === "ไก่");
+                return (rice && chicken) ? `Order ${rice.thai} (${rice.phonetic}) with ${chicken.thai} (${chicken.phonetic})` : lesson.desc;
+            },
+            "Meats & Seafood": () => {
+                const pork = lesson.words.find(w => w.thai === "หมู");
+                const shrimp = lesson.words.find(w => w.thai === "กุ้ง");
+                return (pork && shrimp) ? `Try ${pork.thai} (${pork.phonetic}) or ${shrimp.thai} (${shrimp.phonetic}) dishes` : lesson.desc;
+            },
+            "Cooking Methods": () => {
+                const fried = lesson.words.find(w => w.english === "to stir-fry/fried");
+                const steamed = lesson.words.find(w => w.english === "to steam/steamed");
+                return (fried && steamed) ? `Food can be ${fried.thai} (${fried.phonetic}) or ${steamed.thai} (${steamed.phonetic})` : lesson.desc;
+            },
+            "Drinks": () => {
+                const water = lesson.words.find(w => w.thai === "น้ำ");
+                const coffee = lesson.words.find(w => w.thai === "กาแฟ");
+                return (water && coffee) ? `Order ${water.thai} (${water.phonetic}) or ${coffee.thai} (${coffee.phonetic})` : lesson.desc;
+            },
+            "Fruits": () => {
+                const mango = lesson.words.find(w => w.thai === "มะม่วง");
+                const pineapple = lesson.words.find(w => w.thai === "สับปะรด");
+                return (mango && pineapple) ? `Try ${mango.thai} (${mango.phonetic}) or ${pineapple.thai} (${pineapple.phonetic})` : lesson.desc;
+            },
+            "Colors": () => {
+                const red = lesson.words.find(w => w.english === "Red");
+                const blue = lesson.words.find(w => w.english === "Blue");
+                return (red && blue) ? `The ${red.thai} (${red.phonetic}) car or ${blue.thai} (${blue.phonetic}) sky` : lesson.desc;
+            },
+            "Classifiers": () => {
+                const plate = lesson.words.find(w => w.thai === "จาน");
+                const glass = lesson.words.find(w => w.thai === "แก้ว");
+                return (plate && glass) ? `One ${plate.thai} (${plate.phonetic}) of food, one ${glass.thai} (${glass.phonetic}) of water` : lesson.desc;
+            },
+            "Rooms & Furniture": () => {
+                const bedroom = lesson.words.find(w => w.english === "Bedroom");
+                const table = lesson.words.find(w => w.english === "Table");
+                return (bedroom && table) ? `Sleep in the ${bedroom.thai} (${bedroom.phonetic}), eat at the ${table.thai} (${table.phonetic})` : lesson.desc;
+            },
+            "Time": () => {
+                const now = lesson.words.find(w => w.thai === "ตอนนี้");
+                const hour = lesson.words.find(w => w.thai === "ชั่วโมง");
+                return (now && hour) ? `${now.thai} (${now.phonetic}) is 3:30 - สาม${hour.thai}ครึ่ง` : lesson.desc;
+            },
+            "Calendar": () => {
+                const monday = lesson.words.find(w => w.english === "Monday");
+                const today = lesson.words.find(w => w.english === "Today");
+                return (today && monday) ? `${today.thai} (${today.phonetic}) is ${monday.thai} (${monday.phonetic})` : lesson.desc;
+            },
+            "Months of the Year": () => {
+                const january = lesson.words.find(w => w.english === "January");
+                const december = lesson.words.find(w => w.english === "December");
+                return (january && december) ? `Winter is ${january.thai} (${january.phonetic}) to ${december.thai} (${december.phonetic})` : lesson.desc;
+            },
+            "Frequency": () => {
+                const always = lesson.words.find(w => w.thai === "เสมอ");
+                const sometimes = lesson.words.find(w => w.thai === "บางครั้ง");
+                return (always && sometimes) ? `I eat rice ${always.thai} (${always.phonetic}), go running ${sometimes.thai} (${sometimes.phonetic})` : lesson.desc;
+            },
+            "Past": () => {
+                const ate = lesson.words.find(w => w.thai === "กินแล้ว");
+                const yesterday = lesson.words.find(w => w.english === "Yesterday");
+                return (ate && yesterday) ? `I ${ate.thai} (${ate.phonetic}) rice ${yesterday.thai} (${yesterday.phonetic})` : lesson.desc;
+            },
+            "Future": () => {
+                const willGo = lesson.words.find(w => w.thai === "จะไป");
+                const tomorrow = lesson.words.find(w => w.english === "Tomorrow");
+                return (willGo && tomorrow) ? `I ${willGo.thai} (${willGo.phonetic}) to Bangkok ${tomorrow.thai} (${tomorrow.phonetic})` : lesson.desc;
+            },
+            "Comparison": () => {
+                const bigger = lesson.words.find(w => w.thai === "ใหญ่กว่า");
+                const smaller = lesson.words.find(w => w.thai === "เล็กกว่า");
+                return (bigger && smaller) ? `This house is ${bigger.thai} (${bigger.phonetic}), that one is ${smaller.thai} (${smaller.phonetic})` : lesson.desc;
+            },
+            "Superlative": () => {
+                const most = lesson.words.find(w => w.thai === "ที่สุด");
+                return most ? `This is the ${most.thai} (${most.phonetic}) beautiful` : lesson.desc;
+            },
+            "Invitation": () => {
+                const please = lesson.words.find(w => w.thai === "กรุณา");
+                const come = lesson.words.find(w => w.thai === "มา");
+                return (please && come) ? `${please.thai} (${please.phonetic}) ${come.thai} (${come.phonetic}) to my party` : lesson.desc;
+            },
+            "Suggestion": () => {
+                const should = lesson.words.find(w => w.thai === "ควร");
+                const eat = lesson.words.find(w => w.thai === "กิน");
+                return (should && eat) ? `You ${should.thai} (${should.phonetic}) ${eat.thai} (${eat.phonetic}) vegetables` : lesson.desc;
+            },
+            "Opinion": () => {
+                const think = lesson.words.find(w => w.thai === "คิดว่า");
+                const good = lesson.words.find(w => w.thai === "ดี");
+                return (think && good) ? `I ${think.thai} (${think.phonetic}) it's ${good.thai} (${good.phonetic})` : lesson.desc;
+            },
+            "Emotion": () => {
+                const happy = lesson.words.find(w => w.thai === "มีความสุข");
+                const sad = lesson.words.find(w => w.thai === "เศร้า");
+                return (happy && sad) ? `I'm ${happy.thai} (${happy.phonetic}) or ${sad.thai} (${sad.phonetic})` : lesson.desc;
+            },
+            "Linking": () => {
+                const and = lesson.words.find(w => w.thai === "และ");
+                const but = lesson.words.find(w => w.thai === "แต่");
+                return (and && but) ? `Rice ${and.thai} (${and.phonetic}) fish, ${but.thai} (${but.phonetic}) no vegetables` : lesson.desc;
+            },
+            "Body": () => {
+                const head = lesson.words.find(w => w.english === "Head");
+                const hand = lesson.words.find(w => w.english === "Hand");
+                return (head && hand) ? `My ${head.thai} (${head.phonetic}) and ${hand.thai} (${hand.phonetic})` : lesson.desc;
+            },
+            "Fauna": () => {
+                const elephant = lesson.words.find(w => w.thai === "ช้าง");
+                const tiger = lesson.words.find(w => w.thai === "เสือ");
+                return (elephant && tiger) ? `See the ${elephant.thai} (${elephant.phonetic}) and ${tiger.thai} (${tiger.phonetic})` : lesson.desc;
+            }
+        };
+        
+        return examples[lesson.title] ? examples[lesson.title]() : lesson.desc;
+        } catch (error) {
+            console.error('Error in getTopicExample for lesson:', lesson.title, error);
+            return lesson.desc;
+        }
     },
 
     loadLesson: function(id) {
@@ -4362,6 +5007,12 @@ const app = {
                 </div>
             </div>
         `).join('');
+
+        // Add grammar section
+        const grammarContainer = document.createElement('div');
+        grammarContainer.id = 'grammar-container';
+        grammarContainer.innerHTML = this.getGrammarExamples(this.currentLesson);
+        container.appendChild(grammarContainer);
 
         this.showSection('lesson-detail');
     },
@@ -4435,12 +5086,6 @@ const app = {
                 <p style="margin-bottom: 20px; color: #666;">Take a quiz with words from all lessons</p>
                 <button class="btn btn-success" onclick="app.launchMixedQuiz()">Start Quiz</button>
             `;
-        } else if (mode === 'tones') {
-            container.innerHTML = `
-                <h3 style="color: var(--secondary); margin-bottom: 20px;">Tone Practice</h3>
-                <p style="margin-bottom: 20px; color: #666;">Practice identifying Thai tones</p>
-                <p style="color: #888; font-style: italic;">Coming soon - this feature is under development</p>
-            `;
         }
     },
 
@@ -4485,6 +5130,172 @@ const app = {
         document.getElementById('quiz-modal').classList.add('active');
     }
 };
+
+// ========================================
+// VOCABULARY DATA FOR TONE LESSON
+// ========================================
+
+const VOCABULARY = {
+    lesson1: {
+        tones: [
+            { tone: 'high', thai: 'น้ำ', phonetic: 'náam', english: 'water', svgPath: 'M 5 10 H 95' },
+            { tone: 'falling', thai: 'ใหญ่', phonetic: 'yài', english: 'big', svgPath: 'M 5 15 C 40 5, 60 45, 95 40' },
+            { tone: 'mid', thai: 'มา', phonetic: 'maa', english: 'come', svgPath: 'M 5 25 H 95' },
+            { tone: 'rising', thai: 'หิว', phonetic: 'hǐw', english: 'hungry', svgPath: 'M 5 35 C 40 45, 60 5, 95 15' },
+            { tone: 'low', thai: 'ไข่', phonetic: 'khài', english: 'egg', svgPath: 'M 5 40 H 95' }
+        ]
+    }
+};
+
+// ========================================
+// TONE LESSON RENDERING & QUIZ FUNCTIONS
+// ========================================
+
+function renderLesson1() {
+    const container = document.getElementById('lesson1-vocab');
+    VOCABULARY.lesson1.tones.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center gap-4 p-3 bg-gray-50 rounded';
+        div.innerHTML = `
+            <div class="flex-grow">
+                <strong>${item.tone.charAt(0).toUpperCase() + item.tone.slice(1)} Tone:</strong> 
+                <div><span class="thai-script">${item.thai}</span></div>
+                <div class="text-sm text-gray-600">(${item.phonetic})</div>
+                <div>- ${item.english}</div>
+            </div>
+            <div class="tone-visualizer">
+                <svg viewBox="0 0 100 50" class="w-full h-full">
+                    <path d="${item.svgPath}" stroke="#666" stroke-width="2" fill="none"/>
+                    <circle r="4" fill="#ef4444" class="tone-dot" style="offset-path: path('${item.svgPath}');"/>
+                </svg>
+            </div>
+            <button class="tone-btn bg-blue-500 text-white px-3 py-2 rounded" data-text="${item.thai}">Play</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+let currentQuiz = null;
+
+function startQuiz(section, quizType) {
+    const startDiv = section.querySelector('.quiz-start');
+    const activeDiv = section.querySelector('.quiz-active');
+    const completeDiv = section.querySelector('.quiz-complete');
+    
+    startDiv.classList.add('hidden');
+    completeDiv.classList.add('hidden');
+    activeDiv.classList.remove('hidden');
+
+    let questions = [];
+    
+    if (quizType === 'tone') {
+        questions = VOCABULARY.lesson1.tones.map(item => ({
+            word: item.thai,
+            tone: item.tone,
+            meaning: item.english,
+            phonetic: item.phonetic
+        }));
+    }
+    
+    currentQuiz = {
+        questions: questions.sort(() => Math.random() - 0.5).slice(0, 5),
+        currentIndex: 0,
+        score: 0,
+        section: section,
+        type: quizType
+    };
+    
+    showQuestion();
+}
+
+function showQuestion() {
+    const { questions, currentIndex, section, type } = currentQuiz;
+    const question = questions[currentIndex];
+    
+    const progress = section.querySelector('.quiz-progress');
+    const playBtn = section.querySelector('.play-quiz-audio');
+    const options = section.querySelector('.quiz-options');
+    const feedback = section.querySelector('.quiz-feedback');
+    const nextBtn = section.querySelector('.quiz-next');
+    
+    progress.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
+    feedback.textContent = '';
+    nextBtn.classList.add('hidden');
+    
+    playBtn.onclick = () => tts.speak(question.word);
+    
+    if (type === 'tone') {
+        tts.speak(question.word);
+        const tones = ['high', 'falling', 'mid', 'rising', 'low'];
+        options.innerHTML = tones.map(tone => 
+            `<button class="tone-option practice-option bg-gray-200 p-3 rounded hover:bg-teal-200 transition border-2 border-gray-300" data-answer="${tone}">${tone}</button>`
+        ).join('');
+    }
+    
+    options.querySelectorAll('.practice-option').forEach(btn => {
+        btn.onclick = () => checkAnswer(btn.dataset.answer, question.meaning || question.tone);
+    });
+}
+
+function checkAnswer(selected, correct) {
+    const { questions, currentIndex } = currentQuiz;
+    const isCorrect = selected === correct;
+    
+    const section = currentQuiz.section;
+    const optionElements = section.querySelectorAll('.practice-option');
+    const feedback = section.querySelector('.quiz-feedback');
+    const nextBtn = section.querySelector('.quiz-next');
+    
+    optionElements.forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.answer === correct) {
+            btn.classList.add('correct');
+        }
+        if (btn.dataset.answer === selected && !isCorrect) {
+            btn.classList.add('incorrect');
+        }
+    });
+    
+    if (isCorrect) {
+        currentQuiz.score++;
+        feedback.textContent = "Correct!";
+        feedback.className = "quiz-feedback mt-4 text-center font-bold text-green-600";
+    } else {
+        feedback.textContent = `Not quite! The correct answer is "${correct}".`;
+        feedback.className = "quiz-feedback mt-4 text-center font-bold text-red-600";
+    }
+    
+    nextBtn.classList.remove('hidden');
+    nextBtn.onclick = () => {
+        currentQuiz.currentIndex++;
+        if (currentQuiz.currentIndex < currentQuiz.questions.length) {
+            showQuestion();
+        } else {
+            showQuizComplete();
+        }
+    };
+}
+
+function showQuizComplete() {
+    const section = currentQuiz.section;
+    const activeDiv = section.querySelector('.quiz-active');
+    const completeDiv = section.querySelector('.quiz-complete');
+    const scoreDiv = section.querySelector('.quiz-score');
+    const retryBtn = section.querySelector('.retry-quiz');
+    
+    activeDiv.classList.add('hidden');
+    completeDiv.classList.remove('hidden');
+    
+    const { score, questions, type } = currentQuiz;
+    const percentage = Math.round((score / questions.length) * 100);
+    scoreDiv.textContent = `${score} out of ${questions.length} correct! (${percentage}%)`;
+    
+    retryBtn.onclick = () => startQuiz(section, type);
+}
+
+// ========================================
+// END OF TONE LESSON CODE
+// ========================================
 
 // --- FLASHCARD LOGIC ---
 const flashcards = {
@@ -4628,8 +5439,9 @@ const quiz = {
 
     renderQuiz: function() {
         const container = document.getElementById('quiz-body');
+        const title = app.currentLesson ? app.currentLesson.title : "Mixed Quiz";
         container.innerHTML = `
-            <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">Quiz: ${app.currentLesson.title}</h2>
+            <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">Quiz: ${title}</h2>
             <div id="quiz-questions">
                 ${this.questions.map((q, idx) => `
                     <div class="q-block" style="margin-bottom:30px; border-bottom:1px solid #eee; padding-bottom:20px;">
@@ -4721,7 +5533,34 @@ const tts = {
 };
 
 // Start
-document.addEventListener('DOMContentLoaded', () => app.init());
+document.addEventListener('DOMContentLoaded', () => {
+    app.init();
+    
+    // Tone lesson event listeners
+    document.querySelectorAll('.tone-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = btn.dataset.text;
+            tts.speak(text);
+            
+            const visualizer = btn.previousElementSibling;
+            if (visualizer && visualizer.classList.contains('tone-visualizer')) {
+                const dot = visualizer.querySelector('.tone-dot');
+                dot.classList.add('animate');
+                setTimeout(() => dot.classList.remove('animate'), 1500);
+            }
+        });
+    });
+    
+    // Quiz functionality for tones section
+    document.querySelectorAll('.start-quiz').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const section = e.target.closest('.quiz-section');
+            const quizType = section.dataset.quiz;
+            startQuiz(section, quizType);
+        });
+    });
+});
 
 </script>
 </body>
